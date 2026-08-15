@@ -1,0 +1,23 @@
+output_root: output
+max_workers: 1
+llm:
+  provider: none
+jobs:
+  - family: dna-motif-localization
+    difficulty: easy
+    count: 2
+    seed: 1000
+    backend: local
+    local_device: cpu
+  - family: rna-structure-ranking
+    difficulty: medium
+    count: 1
+    seed: 2000
+    backend: local
+    local_device: cpu
+  - family: protein-structure-nearest
+    difficulty: easy
+    count: 1
+    seed: 3000
+    backend: modal
+
