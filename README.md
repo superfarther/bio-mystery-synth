@@ -6,15 +6,7 @@ artifacts.
 
 ## Development setup
 
-The lightweight test suite does not import Proto or install model environments:
-
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -e '.[dev,openai]'
-.venv/bin/pytest
-```
-
-For real generation, make the existing Proto checkouts importable without installing
+For data generation, make the existing Proto checkouts importable without installing
 their optional model environments:
 
 ```bash
