@@ -72,7 +72,7 @@ class ProtoRuntime:
         ok = False
         device = "modal" if self.execution.backend == Backend.MODAL else self.execution.local_device
         try:
-            from proto_language.constraint import gc_content_constraint
+            from proto_language.constraint import gc_content_constraint, sequence_length_constraint
             from proto_language.core import Constraint, Construct, Program, Segment
             from proto_language.generator import (
                 RandomNucleotideGenerator,
@@ -89,7 +89,13 @@ class ProtoRuntime:
             else:
                 generator = RandomNucleotideGenerator(RandomNucleotideGeneratorConfig())
             generator.assign(segment)
-            constraints = []
+            constraints = [
+                Constraint(
+                    inputs=[segment],
+                    function=sequence_length_constraint,
+                    function_config={"target_length": length},
+                )
+            ]
             if gc_fraction is not None:
                 margin = 3.0
                 constraints.append(
