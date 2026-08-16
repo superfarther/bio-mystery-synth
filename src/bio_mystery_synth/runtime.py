@@ -39,6 +39,8 @@ class ProtoRuntime:
             from proto_tools.tools import ToolRegistry
 
             spec = ToolRegistry.get(tool)
+            if self.execution.backend == Backend.LOCAL and not spec.uses_gpu:
+                device = "cpu"
             if spec.category == "database_retrieval":
                 raise ValueError(f"closed-world generation forbids {tool}")
             if self.execution.backend == Backend.LOCAL and spec.uses_gpu and not device.startswith("cuda"):
@@ -70,7 +72,7 @@ class ProtoRuntime:
     ) -> list[str]:
         started = time.monotonic()
         ok = False
-        device = "modal" if self.execution.backend == Backend.MODAL else self.execution.local_device
+        device = "modal" if self.execution.backend == Backend.MODAL else "cpu"
         try:
             from proto_language.constraint import gc_content_constraint, sequence_length_constraint
             from proto_language.core import Constraint, Construct, Program, Segment
@@ -152,6 +154,19 @@ DECLARED_TOOLS = {
     ],
     "crispr-spacer-linkage": ["minced-crispr"],
     "windowed-recombination": ["mafft-align"],
+    "utr-regulatory-assay": [
+        "orfipy-prediction",
+        "miranda-scan",
+        "viennarna-prediction",
+        "primer3-thermodynamics",
+    ],
+    "metagenomic-enzyme-forensics": [
+        "prodigal-prediction",
+        "pyhmmer-phmmer",
+        "esmfold-prediction",
+        "structure-metrics",
+        "tmalign-alignment",
+    ],
 }
 
 

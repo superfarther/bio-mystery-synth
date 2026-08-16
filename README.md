@@ -30,3 +30,6 @@ bio-mystery-synth validate cases/<case_id>
 Set `OPENAI_API_KEY` and pass `--llm openai --model <model>` to use the OpenAI
 structured-output question writer. Without it, the deterministic family question is used.
 
+The `utr-regulatory-assay` and `metagenomic-enzyme-forensics` families are designed
+for autonomous long-horizon solving: their public questions state biological goals and
+evidence requirements without prescribing tool names, parameters, or call order.

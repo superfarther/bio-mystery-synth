@@ -8,11 +8,13 @@ from bio_mystery_synth.models import (
     Difficulty,
     DNAMotifFamilySpec,
     ExecutionSpec,
+    MetagenomicEnzymeFamilySpec,
     ProteinBridgeFamilySpec,
     ProteinStructureFamilySpec,
     RecombinationFamilySpec,
     RNAStructureFamilySpec,
     ScenarioSpec,
+    UTRRegulatoryAssayFamilySpec,
 )
 
 
@@ -74,6 +76,26 @@ def default_scenario(
             Difficulty.HARD: dict(num_candidates=96, sequence_length=8000, num_recombinants=5, window_size=250),
         }[difficulty]
         family_spec = RecombinationFamilySpec(**settings)
+    elif family == "utr-regulatory-assay":
+        settings = {
+            Difficulty.EASY: dict(num_transcripts=8, coding_aa_length=90, utr_length=200, num_mirnas=2),
+            Difficulty.MEDIUM: dict(num_transcripts=12, coding_aa_length=120, utr_length=280, num_mirnas=3),
+            Difficulty.HARD: dict(
+                num_transcripts=20,
+                coding_aa_length=160,
+                utr_length=420,
+                num_mirnas=5,
+                primer_pairs_per_transcript=5,
+            ),
+        }[difficulty]
+        family_spec = UTRRegulatoryAssayFamilySpec(**settings)
+    elif family == "metagenomic-enzyme-forensics":
+        settings = {
+            Difficulty.EASY: dict(num_contigs=10, contig_length=5000, protein_length=110, num_homologs=5),
+            Difficulty.MEDIUM: dict(num_contigs=16, contig_length=8000, protein_length=150, num_homologs=6),
+            Difficulty.HARD: dict(num_contigs=24, contig_length=12_000, protein_length=180, num_homologs=7),
+        }[difficulty]
+        family_spec = MetagenomicEnzymeFamilySpec(**settings)
     else:
         raise ValueError(f"unknown task family: {family}")
     return ScenarioSpec(

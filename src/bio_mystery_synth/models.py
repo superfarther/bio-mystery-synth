@@ -178,13 +178,48 @@ class RecombinationFamilySpec(StrictModel):
         return self
 
 
+class UTRRegulatoryAssayFamilySpec(StrictModel):
+    kind: Literal["utr-regulatory-assay"] = "utr-regulatory-assay"
+    num_transcripts: int = Field(default=12, ge=8, le=64)
+    coding_aa_length: int = Field(default=140, ge=80, le=500)
+    utr_length: int = Field(default=320, ge=180, le=2000)
+    num_mirnas: int = Field(default=4, ge=2, le=12)
+    mirna_length: int = Field(default=22, ge=18, le=30)
+    primer_pairs_per_transcript: int = Field(default=4, ge=3, le=12)
+    fold_window: int = Field(default=100, ge=60, le=300)
+
+    @model_validator(mode="after")
+    def validate_fold_window(self) -> UTRRegulatoryAssayFamilySpec:
+        if self.fold_window > self.utr_length:
+            raise ValueError("fold window exceeds UTR length")
+        return self
+
+
+class MetagenomicEnzymeFamilySpec(StrictModel):
+    kind: Literal["metagenomic-enzyme-forensics"] = "metagenomic-enzyme-forensics"
+    num_contigs: int = Field(default=16, ge=10, le=64)
+    contig_length: int = Field(default=12_000, ge=4000, le=100_000)
+    protein_length: int = Field(default=180, ge=100, le=500)
+    num_homologs: int = Field(default=6, ge=5, le=12)
+    max_low_complexity: float = Field(default=0.25, ge=0, le=0.8)
+    min_confidence_gap: float = Field(default=1e-5, ge=0, le=0.2)
+
+    @model_validator(mode="after")
+    def validate_homologs(self) -> MetagenomicEnzymeFamilySpec:
+        if self.num_homologs >= self.num_contigs:
+            raise ValueError("homolog count must be smaller than contig count")
+        return self
+
+
 FamilySpec = Annotated[
     DNAMotifFamilySpec
     | RNAStructureFamilySpec
     | ProteinStructureFamilySpec
     | ProteinBridgeFamilySpec
     | CrisprLinkageFamilySpec
-    | RecombinationFamilySpec,
+    | RecombinationFamilySpec
+    | UTRRegulatoryAssayFamilySpec
+    | MetagenomicEnzymeFamilySpec,
     Field(discriminator="kind"),
 ]
 
