@@ -1,6 +1,6 @@
 # bio-mystery-synth
 
-技术文档：[technical_report.md](/share/org/YZWL/yzwl_yuanzh/work/kimi-work/bio-mystery-synth/technical_report.md)
+技术文档：[technical_report.md](./technical_report.md)
 
 ## 目录
 
