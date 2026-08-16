@@ -4,7 +4,10 @@ from typing import Any
 
 from bio_mystery_synth.tools.catalog import CURATED_TOOLS
 
-CLOSED_WORLD_CONFIG = {"blast-search": {"search_mode": "local"}}
+CLOSED_WORLD_CONFIG = {
+    "blast-search": {"search_mode": "local"},
+    "foldmason-msa": {"search_mode": "local"},
+}
 CLOSED_WORLD_REQUIRED_CONFIG = {"blast-search": ("local_db",)}
 
 

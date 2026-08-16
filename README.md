@@ -121,16 +121,18 @@ pytest
 
 ## 工具目录
 
-框架维护一个白名单，而不是把 proto-tools 注册表中的所有工具全部暴露给合成流程。当前包含 31 个可用工具：
+框架维护一个白名单，而不是把 proto-tools 注册表中的所有工具全部暴露给合成流程。当前包含 39 个可用工具：
 
 | 能力链 | 新增工具 |
 | --- | --- |
+| GPU 蛋白语言模型 | `esm2-score`、`esm2-embedding`、`esm2-sample`、`esm2-gradient` |
+| 高级 CPU 分析 | `foldmason-msa`、`foldmason-score-msa`、`pyrosetta-energy`、`pyrosetta-sasa` |
 | 启动子与基因组上下文 | `promoter-calculator` |
 | Profile 与局部同源分析 | `pyhmmer-hmmscan`、`pyhmmer-hmmsearch`、`pyhmmer-jackhmmer`、`pyhmmer-nhmmer`、`blast-create-db`、`blast-search`、`mmseqs2-clustering`、`mmseqs2-search-genomes` |
 | 结构比较与分群 | `foldseek-cluster`、`foldseek-multimercluster`、`pymol-rmsd-alignment`、`usalign-alignment`、`dssp-secondary-structure` |
 | 分子与界面分析 | `vina-docking`、`ipsae-scoring`、`pdockq2` |
 
-`ProtoRuntime` 只允许目录内工具，继续拒绝整个 `database_retrieval` 类别。`blast-search` 会被强制设为本地模式，并且必须接收当前 case 内由 `blast-create-db` 建出的 `local_db`；传入在线模式会在工具执行前失败。
+`ProtoRuntime` 只允许目录内工具，继续拒绝整个 `database_retrieval` 类别。`blast-search` 会被强制设为本地模式，并且必须接收当前 case 内由 `blast-create-db` 建出的 `local_db`；`foldmason-msa` 同样被强制为本地模式。传入在线模式会在工具执行前失败。
 
 `list-tools` 会列出当前任务族、扩展能力组以及已安装 proto-tools 中可解析的工具总数：
 
@@ -150,11 +152,13 @@ profile-fold-rescue: mafft-align, pyhmmer-hmmsearch, esmfold-prediction, foldsee
 multimer-interface-selection: mmseqs2-clustering, esmfold-prediction, foldseek-multimercluster, ipsae-scoring, pdockq2
 conformation-ligand-triage: esmfold-prediction, usalign-alignment, pymol-rmsd-alignment, dssp-secondary-structure, vina-docking
 mobile-element-attribution: mmseqs2-search-genomes, pyhmmer-nhmmer, blast-create-db, blast-search, prodigal-prediction
+[gpu-protein-language-modeling]: esm2-score, esm2-embedding, esm2-sample, esm2-gradient
+[advanced-cpu-analysis]: foldmason-msa, foldmason-score-msa, pyrosetta-energy, pyrosetta-sasa
 [promoter-context]: promoter-calculator
 [profile-and-local-homology]: pyhmmer-hmmscan, pyhmmer-hmmsearch, pyhmmer-jackhmmer, pyhmmer-nhmmer, blast-create-db, blast-search, mmseqs2-clustering, mmseqs2-search-genomes
 [structure-comparison]: foldseek-cluster, foldseek-multimercluster, pymol-rmsd-alignment, usalign-alignment, dssp-secondary-structure
 [molecular-interaction]: vina-docking, ipsae-scoring, pdockq2
-31/31 tools available
+39/39 tools available
 ```
 
 自定义 Proto-tools 配置环境、下载数据和模型权重的路径：

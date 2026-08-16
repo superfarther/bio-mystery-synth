@@ -22,4 +22,4 @@ def test_list_tools() -> None:
     result = CliRunner().invoke(app, ["list-tools"])
     assert result.exit_code == 0
     assert "[profile-and-local-homology]" in result.stdout
-    assert "/31 tools available" in result.stdout
+    assert "39/39 tools available" in result.stdout

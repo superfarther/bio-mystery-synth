@@ -1,9 +1,18 @@
-from bio_mystery_synth.tools.catalog import CURATED_TOOLS, TOOL_GROUPS, ToolDescriptor, tool_descriptors
+from bio_mystery_synth.tools.catalog import (
+    CURATED_TOOLS,
+    NEW_CPU_TOOLS,
+    NEW_GPU_TOOLS,
+    TOOL_GROUPS,
+    ToolDescriptor,
+    tool_descriptors,
+)
 from bio_mystery_synth.tools.policy import ClosedWorldToolPolicy, apply_closed_world_config
 from bio_mystery_synth.tools.registry import ToolRegistry, builtin_tool_registry
 
 __all__ = [
     "CURATED_TOOLS",
+    "NEW_CPU_TOOLS",
+    "NEW_GPU_TOOLS",
     "TOOL_GROUPS",
     "ClosedWorldToolPolicy",
     "ToolDescriptor",

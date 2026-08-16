@@ -8,6 +8,18 @@ class ToolDescriptor:
 
 
 TOOL_GROUPS = {
+    "gpu-protein-language-modeling": [
+        "esm2-score",
+        "esm2-embedding",
+        "esm2-sample",
+        "esm2-gradient",
+    ],
+    "advanced-cpu-analysis": [
+        "foldmason-msa",
+        "foldmason-score-msa",
+        "pyrosetta-energy",
+        "pyrosetta-sasa",
+    ],
     "promoter-context": ["promoter-calculator"],
     "profile-and-local-homology": [
         "pyhmmer-hmmscan",
@@ -28,6 +40,9 @@ TOOL_GROUPS = {
     ],
     "molecular-interaction": ["vina-docking", "ipsae-scoring", "pdockq2"],
 }
+
+NEW_GPU_TOOLS = frozenset(TOOL_GROUPS["gpu-protein-language-modeling"])
+NEW_CPU_TOOLS = frozenset(TOOL_GROUPS["advanced-cpu-analysis"])
 
 _BUILTIN_TOOLS = {
     "random-nucleotide-sample",
