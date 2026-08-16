@@ -1,0 +1,26 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda:0",
+    "tool_overrides": {}
+  },
+  "family": {
+    "hotspot_count": 28,
+    "kind": "protein-repair-adjudication",
+    "num_candidates": 32,
+    "sequence_length": 220
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 2026081701,
+  "source": "closed-world"
+}

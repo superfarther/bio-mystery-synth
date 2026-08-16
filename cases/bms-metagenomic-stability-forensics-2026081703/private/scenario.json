@@ -1,0 +1,28 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda:0",
+    "tool_overrides": {}
+  },
+  "family": {
+    "contig_length": 25000,
+    "finalist_count": 8,
+    "kind": "metagenomic-stability-forensics",
+    "num_contigs": 128,
+    "num_homologs": 16,
+    "protein_length": 220
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 2026081703,
+  "source": "closed-world"
+}

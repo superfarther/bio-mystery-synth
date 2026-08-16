@@ -1,0 +1,26 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda:0",
+    "tool_overrides": {}
+  },
+  "family": {
+    "kind": "structural-discordance-cohort",
+    "num_candidates": 24,
+    "sequence_length": 240,
+    "shortlist_size": 6
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 2026081702,
+  "source": "closed-world"
+}

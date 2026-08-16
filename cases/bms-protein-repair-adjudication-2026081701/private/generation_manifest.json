@@ -1,0 +1,444 @@
+{
+  "backend": "local",
+  "case_id": "bms-protein-repair-adjudication-2026081701",
+  "file_sha256": {
+    "private/answer.json": "5051cf0f135e4837d9cf16b8fc7c3a8a44e788ddc58c6177b8e6fef4c07cbb87",
+    "private/latent_truth.json": "bdf17ae69bc94e79071c9f393df0c2d1817d262758613164a142d5bfb6edb992",
+    "private/scenario.json": "08fe2f0ec0202f3a47928d37d50bdadeaedad595d2f9e0891601ac041fed2403",
+    "public/data/candidate_structures/Sample_001.pdb": "b98690205dc78bdafbfd1acef3670a4ec8f92e6df0835622e5939365db74e9b6",
+    "public/data/candidate_structures/Sample_002.pdb": "5bd90cc3d766a364f5b5e8aa58dcf4e6d70b95a129d25e1107a68930e681d303",
+    "public/data/candidate_structures/Sample_003.pdb": "a74d7698e1bd4f3ae479f8a76cf6843d76b11aceafa8e3fcf37588cb43588216",
+    "public/data/candidate_structures/Sample_004.pdb": "3af3fb55a7463a80cb593e57d594a01a85bfbc01e996f6625c0016cd75700f66",
+    "public/data/candidate_structures/Sample_005.pdb": "e04d9ff2cb479d7cea7c4f191a89195db8adace2b8148d93dd1818356b40cb25",
+    "public/data/candidate_structures/Sample_006.pdb": "566a8af3dc94c9670a620b75d39b70a75f9678de7ff51986d852da32cca7ed9b",
+    "public/data/candidate_structures/Sample_007.pdb": "76be8cf6bf5d6f8ae987b68b60c33217b74f501601898af5b8cb86b652fab2a7",
+    "public/data/candidate_structures/Sample_008.pdb": "fa8537e955b45dbd42403d427ec24c6f5dc03b71aea13f042b1817c54d54a1cf",
+    "public/data/candidate_structures/Sample_009.pdb": "3581d6da42dc4f9e8f51e204a05cea9f1c092b02d9886d0106dd2994cbe6d5bf",
+    "public/data/candidate_structures/Sample_010.pdb": "a9766b86de5566c77b0fa654348d79b517fe1f740458e540bf87bfdfe43bc562",
+    "public/data/candidate_structures/Sample_011.pdb": "5c918ba215c7719bb5475b397897b46044171842db7f2fa5d9b790db14181b89",
+    "public/data/candidate_structures/Sample_012.pdb": "8b3e6a8e5e75bf142d5d0e38fd4766a75298ba282c48dacd6750936abea38c5c",
+    "public/data/candidate_structures/Sample_013.pdb": "05c9715039ca4808100b5cf7d37575d62982c75e9717bf9f7df912d149efd75d",
+    "public/data/candidate_structures/Sample_014.pdb": "41dd44379325eb046c224675039f69e28620e1062dcb9beaeaef67fd54db251d",
+    "public/data/candidate_structures/Sample_015.pdb": "d3b28c3a6cade718506442ec0ef7300cd0d3def10d3cdf3da9015adb10cf1af3",
+    "public/data/candidate_structures/Sample_016.pdb": "ddf38eb89d43ff4fa338f615b5213d7a9f2f6b5bf546de98b273f02848b8e3e4",
+    "public/data/candidate_structures/Sample_017.pdb": "33b3996b2faa8cdff82662cbf7a77312d0e78c2c5024e977ebfea6453d33d711",
+    "public/data/candidate_structures/Sample_018.pdb": "2a80a219e4691d682bb18b2cb0e81aac76846a8ac9774c8317b2277de0c8cce4",
+    "public/data/candidate_structures/Sample_019.pdb": "6551998b6c5455dd94ea2ec4b346dbf154ed307c6e1d293c4a1bd9489bb1c18d",
+    "public/data/candidate_structures/Sample_020.pdb": "4546a6a329ab7903db0312a8268e0909cfc147376c93146c397b0062f43f051c",
+    "public/data/candidate_structures/Sample_021.pdb": "ecd90f30df09a246db063ba511b6afe56406640eb164cd675b840e31e6cea64f",
+    "public/data/candidate_structures/Sample_022.pdb": "6b74cd73594671050b816f0994c6b6cc1b18e04adda34090fa0a88be32394c21",
+    "public/data/candidate_structures/Sample_023.pdb": "b3ea6b7df07fd683e314aabaeeb2639ead683f0a2d60e10f52d837daa6deafd1",
+    "public/data/candidate_structures/Sample_024.pdb": "a90f4182fde979c33e66b155a7e9380dce4de6c05411b5d75147f78b8d4f1e56",
+    "public/data/candidate_structures/Sample_025.pdb": "bc6ba93cc71e117dd294c54bd665406ada6cbd37cb429e867b4913cc178e5f9b",
+    "public/data/candidate_structures/Sample_026.pdb": "5fdb6ac78c4a8574906f6b43e2d34f88627c05dac202c4d4452785b14d4fcfe0",
+    "public/data/candidate_structures/Sample_027.pdb": "814408b0a8810cb9f19190d70957f3f5c1efd1415f2504e2322173ff546a5bf7",
+    "public/data/candidate_structures/Sample_028.pdb": "185f1c80080be140cc54f518c7799de51d4472b25baaf02662745537c34c5871",
+    "public/data/candidate_structures/Sample_029.pdb": "74df424d92c790338feaf78be13da50dade0a3cf8475b12af66747fd88164003",
+    "public/data/candidate_structures/Sample_030.pdb": "d03b60b4cf5935761c8684cca521274fd6259c6e52a95bd6dbee8a191254c31f",
+    "public/data/candidate_structures/Sample_031.pdb": "a708f77a0bfb8559a8d400a9fb56c58f6834838973d16d1b3652fe0cf4f439b5",
+    "public/data/candidate_structures/Sample_032.pdb": "dfd2ee88efa63271e2127a0b8143540f702349e3a44b68b8704b112f8ebf2554",
+    "public/data/candidates.fasta": "a0427327a45a5ce4db0269fdf8d3a86b645590b0c77b3810d039c1f7f3ce0d8d",
+    "public/data/reference.fasta": "1dab5452960bae5ab92c96045bd760a0b8abf7e41cf8982556a105a74446b3da",
+    "public/data/reference.pdb": "a9a901f2c296a8a1a3af123ceeb1169791965037cce8362447d7c93632521fb7",
+    "public/question.md": "92447c530756568c363477f5a60631bf8ab788b667907788feda92c8178da18c"
+  },
+  "public_files": [
+    "public/data/candidate_structures/Sample_001.pdb",
+    "public/data/candidate_structures/Sample_002.pdb",
+    "public/data/candidate_structures/Sample_003.pdb",
+    "public/data/candidate_structures/Sample_004.pdb",
+    "public/data/candidate_structures/Sample_005.pdb",
+    "public/data/candidate_structures/Sample_006.pdb",
+    "public/data/candidate_structures/Sample_007.pdb",
+    "public/data/candidate_structures/Sample_008.pdb",
+    "public/data/candidate_structures/Sample_009.pdb",
+    "public/data/candidate_structures/Sample_010.pdb",
+    "public/data/candidate_structures/Sample_011.pdb",
+    "public/data/candidate_structures/Sample_012.pdb",
+    "public/data/candidate_structures/Sample_013.pdb",
+    "public/data/candidate_structures/Sample_014.pdb",
+    "public/data/candidate_structures/Sample_015.pdb",
+    "public/data/candidate_structures/Sample_016.pdb",
+    "public/data/candidate_structures/Sample_017.pdb",
+    "public/data/candidate_structures/Sample_018.pdb",
+    "public/data/candidate_structures/Sample_019.pdb",
+    "public/data/candidate_structures/Sample_020.pdb",
+    "public/data/candidate_structures/Sample_021.pdb",
+    "public/data/candidate_structures/Sample_022.pdb",
+    "public/data/candidate_structures/Sample_023.pdb",
+    "public/data/candidate_structures/Sample_024.pdb",
+    "public/data/candidate_structures/Sample_025.pdb",
+    "public/data/candidate_structures/Sample_026.pdb",
+    "public/data/candidate_structures/Sample_027.pdb",
+    "public/data/candidate_structures/Sample_028.pdb",
+    "public/data/candidate_structures/Sample_029.pdb",
+    "public/data/candidate_structures/Sample_030.pdb",
+    "public/data/candidate_structures/Sample_031.pdb",
+    "public/data/candidate_structures/Sample_032.pdb",
+    "public/data/candidates.fasta",
+    "public/data/reference.fasta",
+    "public/data/reference.pdb",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081701,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 220
+      },
+      "device": "cpu",
+      "duration_seconds": 5.997054,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 16,
+        "model_checkpoint": "esm2_t6_8M_UR50D",
+        "seed": 2026081701,
+        "use_ste": true
+      },
+      "device": "cuda:0",
+      "duration_seconds": 83.239578,
+      "ok": true,
+      "tool": "esm2-gradient"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 8,
+        "model_checkpoint": "esm2_t6_8M_UR50D",
+        "num_steps": 20,
+        "sampling_method": "iterative_refinement",
+        "seed": 2026081702,
+        "strategy": "entropy",
+        "temperature": 0.8,
+        "top_p": 0.95
+      },
+      "device": "cuda:0",
+      "duration_seconds": 74.097564,
+      "ok": true,
+      "tool": "esm2-sample"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 16,
+        "model_checkpoint": "esm2_t6_8M_UR50D"
+      },
+      "device": "cuda:0",
+      "duration_seconds": 78.281528,
+      "ok": true,
+      "tool": "esm2-score"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 16,
+        "model_checkpoint": "esm2_t6_8M_UR50D"
+      },
+      "device": "cuda:0",
+      "duration_seconds": 112.367204,
+      "ok": true,
+      "tool": "esm2-embedding"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1320,
+        "num_recycles": 6,
+        "seed": 2026081701
+      },
+      "device": "cuda:0",
+      "duration_seconds": 213.67673,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 51.152999,
+      "ok": true,
+      "tool": "dssp-secondary-structure"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 8.6889,
+      "ok": true,
+      "tool": "pyrosetta-energy"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 12.524664,
+      "ok": true,
+      "tool": "pyrosetta-sasa"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.125221,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.174872,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123544,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.12376,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.1738,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123557,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124464,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173618,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.17402,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.178237,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124906,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123208,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173396,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173687,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124454,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173708,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.138622,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.126522,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.137005,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124466,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124674,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.122867,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123452,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173461,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124453,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173919,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123187,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123553,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173501,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123541,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124608,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173372,
+      "ok": true,
+      "tool": "usalign-alignment"
+    }
+  ]
+}

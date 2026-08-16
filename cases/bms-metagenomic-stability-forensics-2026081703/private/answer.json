@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_103:3033-3695",
+        "Sample_025:7588-8250",
+        "Sample_124:1211-1873"
+      ],
+      "field": "top_three_orfs",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires the top three sample/ORF calls in order: Sample_103:3033-3695 > Sample_025:7588-8250 > Sample_124:1211-1873",
+  "schema_version": "1"
+}

@@ -1,0 +1,32 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_021",
+        "Sample_017",
+        "Sample_009",
+        "Sample_002",
+        "Sample_024",
+        "Sample_004"
+      ],
+      "field": "discordant_shortlist",
+      "kind": "unordered_set"
+    },
+    {
+      "expected": [
+        "Sample_009",
+        "Sample_021",
+        "Sample_002",
+        "Sample_017",
+        "Sample_024",
+        "Sample_004"
+      ],
+      "field": "stability_ranking",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires shortlist Sample_021, Sample_017, Sample_009, Sample_002, Sample_024, Sample_004 and stability ranking Sample_009 > Sample_021 > Sample_002 > Sample_017 > Sample_024 > Sample_004",
+  "schema_version": "1"
+}

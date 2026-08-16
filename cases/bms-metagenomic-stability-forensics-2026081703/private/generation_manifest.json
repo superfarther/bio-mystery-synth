@@ -1,0 +1,231 @@
+{
+  "backend": "local",
+  "case_id": "bms-metagenomic-stability-forensics-2026081703",
+  "file_sha256": {
+    "private/answer.json": "38c4ab9af9417d2348027286aa7e41537b7848fef9a96faa3769f69966d43c64",
+    "private/latent_truth.json": "abcec05b1c267c949b6a52a89db53c7039f2a52c66db26dbb6d4b93fc330b830",
+    "private/scenario.json": "94037e3e6e297903690a9c27e3791fecf33c9fca33d3c68da66ac9625513838f",
+    "public/data/contigs.fasta": "4443d74dcceb146bdd2ab730d91e0469543a4a2f1b3c329720fbbbd197d43aaa",
+    "public/data/family_marker.fasta": "54a118145a7ee3c814d02fc073975b175d666637338b0d46444e7d6173ff9cd6",
+    "public/data/family_marker.pdb": "436a066a00403c5031cd2d6bb27041ae160766406fc4ce3ddf5dbd6a42847590",
+    "public/question.md": "1fe2362ad2ba01f728e73c9890b1987f4bbcd252fdd5bf36726dba283342c6fe"
+  },
+  "public_files": [
+    "public/data/contigs.fasta",
+    "public/data/family_marker.fasta",
+    "public/data/family_marker.pdb",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081703,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 220
+      },
+      "device": "cpu",
+      "duration_seconds": 0.722195,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 128,
+        "gc_fraction": 0.5,
+        "length": 25000
+      },
+      "device": "cpu",
+      "duration_seconds": 5.35423,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "closed_ends": false,
+        "meta_mode": true,
+        "min_gene": 90,
+        "num_threads": 8
+      },
+      "device": "cpu",
+      "duration_seconds": 1.994067,
+      "ok": true,
+      "tool": "prodigal-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "domain_evalue_threshold": 0.0001,
+        "evalue_threshold": 0.0001,
+        "num_threads": 8
+      },
+      "device": "cpu",
+      "duration_seconds": 0.477007,
+      "ok": true,
+      "tool": "pyhmmer-phmmer"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 16,
+        "model_checkpoint": "esm2_t6_8M_UR50D"
+      },
+      "device": "cuda:0",
+      "duration_seconds": 77.039782,
+      "ok": true,
+      "tool": "esm2-score"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "batch_size": 16,
+        "model_checkpoint": "esm2_t6_8M_UR50D"
+      },
+      "device": "cuda:0",
+      "duration_seconds": 14.13388,
+      "ok": true,
+      "tool": "esm2-embedding"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1320,
+        "num_recycles": 6,
+        "seed": 2026081703
+      },
+      "device": "cuda:0",
+      "duration_seconds": 152.564336,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "num_threads": 8,
+        "precluster": true,
+        "refine_iters": 2,
+        "search_mode": "local"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.346883,
+      "ok": true,
+      "tool": "foldmason-msa"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "num_threads": 8
+      },
+      "device": "cpu",
+      "duration_seconds": 0.214097,
+      "ok": true,
+      "tool": "foldmason-score-msa"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "alignment_type": 1,
+        "cov": 0.75,
+        "num_threads": 8,
+        "tmscore_threshold": 0.45
+      },
+      "device": "cpu",
+      "duration_seconds": 5.461197,
+      "ok": true,
+      "tool": "foldseek-cluster"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 14.166394,
+      "ok": true,
+      "tool": "dssp-secondary-structure"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 4.606085,
+      "ok": true,
+      "tool": "pyrosetta-energy"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 4.982197,
+      "ok": true,
+      "tool": "pyrosetta-sasa"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124524,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123833,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123229,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173564,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173627,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173677,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.223944,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173591,
+      "ok": true,
+      "tool": "usalign-alignment"
+    }
+  ]
+}

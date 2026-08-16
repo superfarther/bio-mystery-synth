@@ -1,0 +1,358 @@
+{
+  "backend": "local",
+  "case_id": "bms-structural-discordance-cohort-2026081702",
+  "file_sha256": {
+    "private/answer.json": "ccd786ca6a6e01ffbd63344d50fbbc6ff26365c185a0677154f22119ae2eef29",
+    "private/latent_truth.json": "687468c4c4938ccc619b136709bce9e8c3b414ab0d5c5248d51346008aa9a00c",
+    "private/scenario.json": "161c66296ddf848a1e4579761a67202f41513e477b379909968f5e0e99c3572e",
+    "public/data/anchor.pdb": "0d7f0dbf6c0e4eb920c4281806e8148863f19e333cdf9d0c4d62cf3a1cc36c81",
+    "public/data/cohort/Sample_001.pdb": "a67e08b44b581f621911c14ef7313955ab1889bd0ac6505f917fb3f896ac4cec",
+    "public/data/cohort/Sample_002.pdb": "7525fcd8d7ed475ef83285923cc3e0c9a51342d35084e71c60d3a3bbf204e5f2",
+    "public/data/cohort/Sample_003.pdb": "5396bae0ad5fcbd8846ffa271a2a5954577d1efeea3b0c17bb7bdb2c7fbe2016",
+    "public/data/cohort/Sample_004.pdb": "3acaddf68a2cd191cdd845d82515cebefcb248eae0800f7819b333436136fd52",
+    "public/data/cohort/Sample_005.pdb": "0313a5e2a6f62435bc7359083ac073bc421dd64fa053eb3eebd91be3f43cd219",
+    "public/data/cohort/Sample_006.pdb": "03455a0c0c4e225955bc7228d7216e770cc9aa7d5a247e46986982cfb35b597f",
+    "public/data/cohort/Sample_007.pdb": "26498a1da63eccc0cf5ea73ed3cb4c0516ce18710e1f325fe0df308d210ee5ef",
+    "public/data/cohort/Sample_008.pdb": "f43c0f753260d892711795da9435163670b51f47cd2b13984a9201f9752ef91b",
+    "public/data/cohort/Sample_009.pdb": "d7e87bf10d4194bdbb75f4541f90f551d6077185976541a16961ba12192756cf",
+    "public/data/cohort/Sample_010.pdb": "118e276cb9a406d2e071f22d25fea16eade9dddf147124949b02f22b3dfc745b",
+    "public/data/cohort/Sample_011.pdb": "7d3786af1b885736b9d19e2a4ba7209da951b2643051614d539fce8bf80883f8",
+    "public/data/cohort/Sample_012.pdb": "79c257f9f263e36ae8b571a707dc2122f1bdf9d1cc4dc7622d1c0b0d94c174a5",
+    "public/data/cohort/Sample_013.pdb": "10e46ac9c091153427598264a2f598f19c37bf2d6b60f6e801d25d7e04547b3c",
+    "public/data/cohort/Sample_014.pdb": "20ab87f694c053717929803c4aff659105eaddb2c46b7b65c762784428bcb02f",
+    "public/data/cohort/Sample_015.pdb": "0afa4194da879ed4faea5c71b470ff00a98b62cc870823112f3d57f91c708c8a",
+    "public/data/cohort/Sample_016.pdb": "d85a4b142b3ba74dc87e0aebb42cc501fc17f16acd846905bdfaf82f50080b19",
+    "public/data/cohort/Sample_017.pdb": "fee04e9eacc5e2b0b45848aee5a933aa6153285e81b39d36fcc8e684917eb4c3",
+    "public/data/cohort/Sample_018.pdb": "e3ce38d817ca92965905645e2ed44a21670a5f216627a553509a57e36adc3ff3",
+    "public/data/cohort/Sample_019.pdb": "40a2a1f37e055abac5fff487fe931d7fea2212f61621bf11c258beb454632f8c",
+    "public/data/cohort/Sample_020.pdb": "0b9df04db17b68646e4f5895e5e9e4acbcd3c4c747d1cd296c26fa5f90baa679",
+    "public/data/cohort/Sample_021.pdb": "41772a2ccc539f9272469b21f1ba55ec1f7188cb9eca9537a9a6bd7e10ca7951",
+    "public/data/cohort/Sample_022.pdb": "64377f81788e58301286069774bd2c784be6cba7ffe952741da0eafb9afc95ec",
+    "public/data/cohort/Sample_023.pdb": "f641e44e21ea7e32dcd5771bd7786673ce1da48379d9af6966c3d087766ad412",
+    "public/data/cohort/Sample_024.pdb": "053b3736a8bcfd995612a2f3756a61006973b2a98b8aa9e979122b4b3e0dd8ef",
+    "public/data/sequences.fasta": "454ebb1da929d3e39eb84a1b9deed4eb3173152222b367dc9b4a01772da672f4",
+    "public/question.md": "71a017faa227bf3d0d95ce4969475c533211ad626150abe2c9f2a065db046aa4"
+  },
+  "public_files": [
+    "public/data/anchor.pdb",
+    "public/data/cohort/Sample_001.pdb",
+    "public/data/cohort/Sample_002.pdb",
+    "public/data/cohort/Sample_003.pdb",
+    "public/data/cohort/Sample_004.pdb",
+    "public/data/cohort/Sample_005.pdb",
+    "public/data/cohort/Sample_006.pdb",
+    "public/data/cohort/Sample_007.pdb",
+    "public/data/cohort/Sample_008.pdb",
+    "public/data/cohort/Sample_009.pdb",
+    "public/data/cohort/Sample_010.pdb",
+    "public/data/cohort/Sample_011.pdb",
+    "public/data/cohort/Sample_012.pdb",
+    "public/data/cohort/Sample_013.pdb",
+    "public/data/cohort/Sample_014.pdb",
+    "public/data/cohort/Sample_015.pdb",
+    "public/data/cohort/Sample_016.pdb",
+    "public/data/cohort/Sample_017.pdb",
+    "public/data/cohort/Sample_018.pdb",
+    "public/data/cohort/Sample_019.pdb",
+    "public/data/cohort/Sample_020.pdb",
+    "public/data/cohort/Sample_021.pdb",
+    "public/data/cohort/Sample_022.pdb",
+    "public/data/cohort/Sample_023.pdb",
+    "public/data/cohort/Sample_024.pdb",
+    "public/data/sequences.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081702,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 240
+      },
+      "device": "cpu",
+      "duration_seconds": 1.615903,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1200,
+        "num_recycles": 6,
+        "seed": 2026081702
+      },
+      "device": "cuda:0",
+      "duration_seconds": 208.487636,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "align_method": "auto",
+        "max_iterations": 100,
+        "threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 3.475371,
+      "ok": true,
+      "tool": "mafft-align"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "num_threads": 8,
+        "precluster": true,
+        "refine_iters": 2,
+        "search_mode": "local"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.830606,
+      "ok": true,
+      "tool": "foldmason-msa"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "num_threads": 8
+      },
+      "device": "cpu",
+      "duration_seconds": 0.338249,
+      "ok": true,
+      "tool": "foldmason-score-msa"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "alignment_type": 1,
+        "cov": 0.7,
+        "num_threads": 8,
+        "tmscore_threshold": 0.45
+      },
+      "device": "cpu",
+      "duration_seconds": 6.290131,
+      "ok": true,
+      "tool": "foldseek-cluster"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 39.986853,
+      "ok": true,
+      "tool": "dssp-secondary-structure"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 9.333834,
+      "ok": true,
+      "tool": "pyrosetta-energy"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 11.616981,
+      "ok": true,
+      "tool": "pyrosetta-sasa"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.219651,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.12402,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173766,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.121782,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123219,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.12209,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.121983,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.171971,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123055,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123311,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.122564,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.121544,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.172125,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.174064,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.175021,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.12339,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173522,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173452,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124301,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.172074,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.122367,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.173185,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.122062,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.122372,
+      "ok": true,
+      "tool": "usalign-alignment"
+    }
+  ]
+}

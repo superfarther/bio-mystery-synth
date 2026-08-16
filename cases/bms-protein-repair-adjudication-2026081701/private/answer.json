@@ -1,0 +1,19 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_002",
+        "Sample_003",
+        "Sample_006",
+        "Sample_009",
+        "Sample_014"
+      ],
+      "field": "top_five_repairs",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires the five best repairs in order: Sample_002 > Sample_003 > Sample_006 > Sample_009 > Sample_014",
+  "schema_version": "1"
+}
