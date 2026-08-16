@@ -11,7 +11,7 @@
 ## 解决思路
 
 1. BioMysteryBench-full 旨在评估 Agent 解决困难长程生物问题的能力，Agent 无法依靠模型自身的内部知识直接回答这些问题，只能通过缜密思考，正确调用多种不同工具，且具备长时稳定运行的能力才有可能解决这些问题。
-2. 为了提高 Agent 在BioMysteryBench-full上的精度，可以对症下药，针对性地在生物场景中合成必须经过长程思考与工具调用才能解决的问题。具体地说，预期中我们可以搭建一个数据合成pipleline，如果 Agent 想要解决这些问题，必须经过缜密的长程思考，正确调用多种不同工具，识别自身错误并及时纠错。也就是像解决 BioMysteryBench-full 那样，训练 Agent 形成**推理、决策、工具调用、反思、纠错**的长程循环。
+2. 为了提高 Agent 在BioMysteryBench-full上的精度，可以对症下药，针对性地在生物场景中合成必须经过长程思考与工具调用才能解决的问题。具体地说，预期中我们可以搭建一个数据合成pipleline，如果 Agent 想要解决这些问题，必须经过缜密的长程思考，正确调用多种不同工具，识别自身错误并及时纠错。也就是像解决 BioMysteryBench-full 那样，训练 Agent 形成**推理、决策、工具调用、反思、纠错的长程循环**。
 3. 为了能够批量合成大规模的数据，我们可以**利用 LLM 模仿人类专家构造 BioMysteryBench-full 的思路**。具体地说，可以驱动 LLM 在某种背景设定下，合理地调用多种不同的生物学专业工具，构造出一个必须经过多轮长程工具调用才能得到的问答对。
 4. **答案的可验证性很重要**，必须确保合成出来的问题具备唯一且可验证的答案，否则很容易发生reward hacking。
 5. **推理过程的可验证性也很重要**（实际上是信用分配问题），这个问题大致有三种解法：
@@ -21,7 +21,7 @@
 
 ## 方法
 
-本方法合成数据时依赖 Proto-language 和 Proto-tools
+本方法合成数据时依赖 [proto-language](https://github.com/evo-design/proto-language) 和 [proto-tools](https://github.com/evo-design/proto-tools)。
 
 ### Proto-language
 
