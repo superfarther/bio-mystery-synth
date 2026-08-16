@@ -143,6 +143,13 @@ DECLARED_TOOLS = {
         "esmfold-prediction",
         "tmalign-alignment",
     ],
+    "protein-bridge-triage": [
+        "random-protein-sample",
+        "esmfold-prediction",
+        "structure-metrics",
+        "tmalign-alignment",
+        "mafft-align",
+    ],
     "crispr-spacer-linkage": ["minced-crispr"],
     "windowed-recombination": ["mafft-align"],
 }

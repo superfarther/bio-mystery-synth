@@ -8,6 +8,7 @@ from bio_mystery_synth.models import (
     Difficulty,
     DNAMotifFamilySpec,
     ExecutionSpec,
+    ProteinBridgeFamilySpec,
     ProteinStructureFamilySpec,
     RecombinationFamilySpec,
     RNAStructureFamilySpec,
@@ -44,6 +45,13 @@ def default_scenario(
             Difficulty.HARD: dict(num_candidates=16, sequence_length=300),
         }[difficulty]
         family_spec = ProteinStructureFamilySpec(**settings)
+    elif family == "protein-bridge-triage":
+        settings = {
+            Difficulty.EASY: dict(num_candidates=6, sequence_length=100, shortlist_size=3),
+            Difficulty.MEDIUM: dict(num_candidates=8, sequence_length=140, shortlist_size=4),
+            Difficulty.HARD: dict(num_candidates=8, sequence_length=180, shortlist_size=4),
+        }[difficulty]
+        family_spec = ProteinBridgeFamilySpec(**settings)
     elif family == "crispr-spacer-linkage":
         settings = {
             Difficulty.EASY: dict(num_genomes=8, genome_length=10_000, num_targets=1, num_decoys=2),

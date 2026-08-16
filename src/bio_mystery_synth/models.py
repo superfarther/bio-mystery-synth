@@ -117,6 +117,22 @@ class ProteinStructureFamilySpec(StrictModel):
         return self
 
 
+class ProteinBridgeFamilySpec(StrictModel):
+    kind: Literal["protein-bridge-triage"] = "protein-bridge-triage"
+    num_candidates: int = Field(default=8, ge=6, le=16)
+    sequence_length: int = Field(default=180, ge=80, le=500)
+    anchor_divergence: float = Field(default=0.4, ge=0.2, le=0.7)
+    candidate_noise: float = Field(default=0.06, ge=0.01, le=0.2)
+    shortlist_size: int = Field(default=4, ge=3, le=8)
+    min_score_gap: float = Field(default=1e-5, ge=0, le=0.1)
+
+    @model_validator(mode="after")
+    def validate_shortlist(self) -> ProteinBridgeFamilySpec:
+        if self.shortlist_size >= self.num_candidates:
+            raise ValueError("shortlist must be smaller than candidate set")
+        return self
+
+
 class CrisprLinkageFamilySpec(StrictModel):
     kind: Literal["crispr-spacer-linkage"] = "crispr-spacer-linkage"
     num_genomes: int = Field(default=24, ge=6, le=128)
@@ -166,6 +182,7 @@ FamilySpec = Annotated[
     DNAMotifFamilySpec
     | RNAStructureFamilySpec
     | ProteinStructureFamilySpec
+    | ProteinBridgeFamilySpec
     | CrisprLinkageFamilySpec
     | RecombinationFamilySpec,
     Field(discriminator="kind"),
