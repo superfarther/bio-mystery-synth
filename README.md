@@ -76,7 +76,7 @@ export PYTHONPATH="$BMS_WORKSPACE/proto-language:$BMS_WORKSPACE/proto-tools:${PY
 
 ## 环境配置
 
-项目需要 Python 3.10 或更高版本。推荐使用项目约定的 Conda 环境：
+推荐使用 Conda 环境：
 
 ```bash
 conda create -n bio-mystery-synth python=3.11 pip -y
@@ -157,7 +157,7 @@ mobile-element-attribution: mmseqs2-search-genomes, pyhmmer-nhmmer, blast-create
 31/31 tools available
 ```
 
-当前机器准备扩展环境时，可将所有持久化依赖固定在共享资源目录：
+自定义 Proto-tools 配置环境、下载数据和模型权重的路径：
 
 ```bash
 export PROTO_HOME=/share/org/YZWL/yzwl_yuanzh/work/kimi-work/resource/proto_home
@@ -284,7 +284,7 @@ cases/<case_id>/
 
 - `public/question.md`：交给 Agent 的题目，说明要完成什么分析、可以使用哪些数据，以及答案必须采用什么格式。
 - `public/data/`：Agent 解题时需要分析的数据。这些数据完全由项目合成，样本名称已替换为 `Sample_...`。具体文件取决于任务族，可能是 FASTA、结构文件、motif 或表格。
-- `private/scenario.json`：生成本题时使用的“出题配方”，包括题型、难度、seed、数据规模和运行后端。它可以用来确认这道题是怎样配置出来的。
+- `private/scenario.json`：生成本题时使用的场景，包括题型、难度、seed、数据规模和运行后端。它可以用来确认这道题是怎样配置出来的。
 - `private/answer.json`：该问题的标准答案和Rubrics。
 - `private/latent_truth.json`：数据生成期间的隐藏真值。例如：motif 实际被插入了哪个位置、哪个候选项是特意构造的正确项、生成时的内部名称 `dna_002` 对应公开名称 `Sample_007`，以及分析工具返回的详细结果。这些信息用于追溯答案是怎么得到的。
 - `private/generation_manifest.json`：本次生成的运行日志，记录 case ID、seed、执行后端、调用过的工具、公开文件列表和文件校验值，用于检查文件是否完整或被修改。
