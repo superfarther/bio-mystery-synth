@@ -52,7 +52,7 @@
 
 ## 仓库布局
 
-本项目依赖 [proto-language](https://github.com/evo-design/proto-language) 和 [proto-language](https://github.com/evo-design/proto-tools) 的本地源码。三个仓库必须位于同一个顶层目录下，名称保持如下：
+本项目依赖 [proto-language](https://github.com/evo-design/proto-language) 和 [proto-tools](https://github.com/evo-design/proto-tools) 的本地源码。三个仓库必须位于同一个顶层目录下，名称保持如下：
 
 ```text
 <workspace>/
