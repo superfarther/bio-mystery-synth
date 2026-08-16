@@ -1,0 +1,9 @@
+# Resolve a hidden UTR regulatory event and its diagnostic assay
+
+The anonymous records in `data/transcripts.fasta` are competing synthetic isoforms. Exactly one combines an intact long coding region with a near-perfect site for a sequence in `data/mirnas.fasta` that lies in the resulting 3' UTR and is the most locally exposed in the minimum-free-energy fold. Identify that isoform and miRNA. Then choose, from `data/primer_pairs.tsv`, the matching diagnostic pair with closely balanced melting behavior near 60 °C and the weakest combined hairpin, self-dimer, and cross-dimer liabilities. Reconcile all evidence rather than treating a sequence match alone as sufficient.
+
+## Response format
+
+sample: Sample_...
+miRNA: miR_SYN_...
+primer_pair: Pair_...

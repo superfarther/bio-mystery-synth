@@ -1,0 +1,29 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda",
+    "tool_overrides": {}
+  },
+  "family": {
+    "contig_length": 12000,
+    "kind": "metagenomic-enzyme-forensics",
+    "max_low_complexity": 0.25,
+    "min_confidence_gap": 1e-05,
+    "num_contigs": 24,
+    "num_homologs": 7,
+    "protein_length": 180
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260823,
+  "source": "closed-world"
+}

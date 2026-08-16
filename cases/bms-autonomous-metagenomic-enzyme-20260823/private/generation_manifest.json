@@ -1,0 +1,130 @@
+{
+  "backend": "local",
+  "case_id": "bms-autonomous-metagenomic-enzyme-20260823",
+  "file_sha256": {
+    "private/answer.json": "4a7c5b0182b8f1a790c81076fc92e5e542e5b8d74cc93cc0b5a281cd6110e12c",
+    "private/latent_truth.json": "0566071e4d89496b871bb3b9e38608228cc798893f189a12abfab6e99edaa218",
+    "private/scenario.json": "d1549dc77852abf1f0aae0b9679f95c240b95a5ee5e408698fcfa14506da6f25",
+    "public/data/contigs.fasta": "50e42e98d32ead5f49b2037c4638c345c250219877ef7a8e377c03099abb866d",
+    "public/data/family_marker.fasta": "82631be2b01c966ebfabd4e0bd966c27bbc134cd1aa0d61d6d07c2dfc2b78b97",
+    "public/question.md": "777081199fa78ecabbef61ac5df03fb732b49424ee5facad2e4540d8d1177490"
+  },
+  "public_files": [
+    "public/data/contigs.fasta",
+    "public/data/family_marker.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260823,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 180
+      },
+      "device": "cpu",
+      "duration_seconds": 4.14947,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 24,
+        "gc_fraction": 0.5,
+        "length": 12000
+      },
+      "device": "cpu",
+      "duration_seconds": 0.599238,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "closed_ends": false,
+        "meta_mode": true,
+        "min_gene": 90,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 2.47024,
+      "ok": true,
+      "tool": "prodigal-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "domain_evalue_threshold": 1e-05,
+        "evalue_threshold": 1e-05,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 0.381137,
+      "ok": true,
+      "tool": "pyhmmer-phmmer"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1200,
+        "num_recycles": 4
+      },
+      "device": "cuda",
+      "duration_seconds": 153.721973,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.539438,
+      "ok": true,
+      "tool": "structure-metrics"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.295431,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124608,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.123727,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124432,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.12292,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    }
+  ]
+}

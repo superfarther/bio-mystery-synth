@@ -1,0 +1,30 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cpu",
+    "tool_overrides": {}
+  },
+  "family": {
+    "coding_aa_length": 160,
+    "fold_window": 100,
+    "kind": "utr-regulatory-assay",
+    "mirna_length": 22,
+    "num_mirnas": 5,
+    "num_transcripts": 20,
+    "primer_pairs_per_transcript": 5,
+    "utr_length": 420
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260822,
+  "source": "closed-world"
+}

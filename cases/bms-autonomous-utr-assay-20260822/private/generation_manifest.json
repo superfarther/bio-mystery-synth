@@ -1,0 +1,116 @@
+{
+  "backend": "local",
+  "case_id": "bms-autonomous-utr-assay-20260822",
+  "file_sha256": {
+    "private/answer.json": "747fbc61c56490b890c46019bd5d08f189784cf34132404f778c360015148056",
+    "private/latent_truth.json": "32fa3b8e2198e227a990feb39e3605da6defad389fbb526a49082bcfa160f12c",
+    "private/scenario.json": "dcdb1a7e779d687e2f81a348ef7e568f59c5d355913d7d639bae5748c3a9feb0",
+    "public/data/mirnas.fasta": "018eb41b5a6a18b939b9289d1a32014c963f4078853f255a904d77576e63624c",
+    "public/data/primer_pairs.tsv": "d99b894faa2b28638ba92d99c8716a2cddef8a37e5ef5ce90dca4007e685f399",
+    "public/data/transcripts.fasta": "079faacd58ab841c197c6273ac1c827d961a99362b6e66feb0a3885093788aae",
+    "public/question.md": "d712aba48c04aa68a2b97c391a7f0e8e6eb891d854e1d36c2daf4c2faec191ea"
+  },
+  "public_files": [
+    "public/data/mirnas.fasta",
+    "public/data/primer_pairs.tsv",
+    "public/data/transcripts.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260822,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 20,
+        "gc_fraction": null,
+        "length": 160
+      },
+      "device": "cpu",
+      "duration_seconds": 3.843439,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 20,
+        "gc_fraction": 0.45,
+        "length": 420
+      },
+      "device": "cpu",
+      "duration_seconds": 0.03716,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 5,
+        "gc_fraction": 0.45,
+        "length": 22
+      },
+      "device": "cpu",
+      "duration_seconds": 0.005576,
+      "ok": true,
+      "tool": "proto-language:random-rna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "min_len": 320,
+        "start_codons": [
+          "ATG"
+        ],
+        "strand": "f"
+      },
+      "device": "cpu",
+      "duration_seconds": 1.978702,
+      "ok": true,
+      "tool": "orfipy-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "energy_threshold": -10,
+        "mirna_ids": [
+          "miR_SYN_01",
+          "miR_SYN_02",
+          "miR_SYN_03",
+          "miR_SYN_04",
+          "miR_SYN_05"
+        ],
+        "mirna_queries": [
+          "GAGUUUUGAAAAAGGGGCCUAC",
+          "UUUUGCCAUUUGAAGCCGUGUC",
+          "GUUGAAAUUUCUCGCGUGGUGU",
+          "UGCAUCAAGGAGGAACAUUGUU",
+          "AAGCCUCCGGCAUAUGCAGUUU"
+        ],
+        "score_threshold": 80,
+        "strict": true
+      },
+      "device": "cpu",
+      "duration_seconds": 0.691837,
+      "ok": true,
+      "tool": "miranda-scan"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.174261,
+      "ok": true,
+      "tool": "viennarna-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.272684,
+      "ok": true,
+      "tool": "primer3-thermodynamics"
+    }
+  ]
+}
