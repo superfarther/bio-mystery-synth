@@ -1,0 +1,28 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_001",
+        "Sample_008",
+        "Sample_002",
+        "Sample_007"
+      ],
+      "field": "shortlist",
+      "kind": "unordered_set"
+    },
+    {
+      "expected": [
+        "Sample_001",
+        "Sample_008",
+        "Sample_007",
+        "Sample_002"
+      ],
+      "field": "bridge_ranking",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires the exact four-member structural shortlist and its complete final ranking: Sample_001, Sample_002, Sample_007, Sample_008; Sample_001 > Sample_008 > Sample_007 > Sample_002",
+  "schema_version": "1"
+}

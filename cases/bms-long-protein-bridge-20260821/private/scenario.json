@@ -1,0 +1,29 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda",
+    "tool_overrides": {}
+  },
+  "family": {
+    "anchor_divergence": 0.4,
+    "candidate_noise": 0.06,
+    "kind": "protein-bridge-triage",
+    "min_score_gap": 1e-05,
+    "num_candidates": 8,
+    "sequence_length": 180,
+    "shortlist_size": 4
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260821,
+  "source": "closed-world"
+}

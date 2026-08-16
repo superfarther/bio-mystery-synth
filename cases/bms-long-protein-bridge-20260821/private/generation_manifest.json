@@ -1,0 +1,213 @@
+{
+  "backend": "local",
+  "case_id": "bms-long-protein-bridge-20260821",
+  "file_sha256": {
+    "private/answer.json": "94ffa948e774318eb873c84bb6e0ef0fec4fe2fe57661ccc57cdc07575964b2c",
+    "private/latent_truth.json": "6874a4d309a6cee652672a5a3170c2028b18247758dc48c38e81334fcc25d398",
+    "private/scenario.json": "fd6dd7e50880b984f078e75206e8004dd60464be86c35ff0cbf4b741674b0ffc",
+    "public/data/proteins.fasta": "4102b558d6a17ed45269d39858a5c199b14b3d5fd422cb4b18925c5e52c4d454",
+    "public/question.md": "837dd7ab1a1f02245dd02af37d1a5dd36c771f76f2416b39be45637266d8e65d"
+  },
+  "public_files": [
+    "public/data/proteins.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260821,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 180
+      },
+      "device": "cuda",
+      "duration_seconds": 1.433441,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "codon_scheme": "UNIFORM",
+        "seed": 20260822
+      },
+      "device": "cuda",
+      "duration_seconds": 0.000392,
+      "ok": true,
+      "tool": "random-protein-sample"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "codon_scheme": "UNIFORM",
+        "seed": 20260823
+      },
+      "device": "cuda",
+      "duration_seconds": 0.000505,
+      "ok": true,
+      "tool": "random-protein-sample"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1200,
+        "num_recycles": 4
+      },
+      "device": "cuda",
+      "duration_seconds": 133.451347,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 1.165943,
+      "ok": true,
+      "tool": "structure-metrics"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.124484,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.121126,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120862,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.121991,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120905,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120824,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120954,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120731,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.121084,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.121021,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120778,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120986,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120922,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.120702,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.12086,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.121736,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "align_method": "auto",
+        "max_iterations": 0,
+        "threads": 1
+      },
+      "device": "cuda",
+      "duration_seconds": 4.486849,
+      "ok": true,
+      "tool": "mafft-align"
+    }
+  ]
+}
