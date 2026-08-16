@@ -9,6 +9,11 @@ _MODULES = (
     "recombination",
     "utr_regulatory_assay",
     "metagenomic_enzyme",
+    "promoter_cassette",
+    "profile_fold",
+    "multimer_interface",
+    "conformation_ligand",
+    "mobile_element",
 )
 
 for _module in _MODULES:

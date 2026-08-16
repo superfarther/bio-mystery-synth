@@ -32,9 +32,14 @@ from bio_mystery_synth.core import (  # noqa: F401
 )
 from bio_mystery_synth.core.manifest import ToolCallRecord  # noqa: F401
 from bio_mystery_synth.task_families.specs import (  # noqa: F401
+    ConformationLigandFamilySpec,
     CrisprLinkageFamilySpec,
     DNAMotifFamilySpec,
     MetagenomicEnzymeFamilySpec,
+    MobileElementFamilySpec,
+    MultimerInterfaceFamilySpec,
+    ProfileFoldFamilySpec,
+    PromoterCassetteFamilySpec,
     ProteinBridgeFamilySpec,
     ProteinStructureFamilySpec,
     RecombinationFamilySpec,

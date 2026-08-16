@@ -6,8 +6,16 @@ from bio_mystery_synth.cli import app
 def test_list_families() -> None:
     result = CliRunner().invoke(app, ["list-families"])
     assert result.exit_code == 0
-    assert "dna-motif-localization" in result.stdout
-    assert "protein-structure-nearest" in result.stdout
+    expected = {
+        "dna-motif-localization",
+        "protein-structure-nearest",
+        "promoter-cassette-forensics",
+        "profile-fold-rescue",
+        "multimer-interface-selection",
+        "conformation-ligand-triage",
+        "mobile-element-attribution",
+    }
+    assert all(family in result.stdout for family in expected)
 
 
 def test_list_tools() -> None:
