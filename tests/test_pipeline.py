@@ -14,6 +14,7 @@ from bio_mystery_synth.pipeline import CaseGenerator, validate_case
         "dna-motif-localization",
         "rna-structure-ranking",
         "protein-structure-nearest",
+        "protein-bridge-triage",
         "crispr-spacer-linkage",
         "windowed-recombination",
     ],

@@ -80,6 +80,19 @@ class FakeRuntime:
             match = re.search(r"MODEL (\d+)", inputs["query_structure"])
             index = int(match.group(1)) if match else 9
             output = {"metrics": {"tm_score_chain_1": 1 - index / 10, "tm_score_chain_2": 1 - index / 10}}
+        elif tool == "structure-metrics":
+            output = {
+                "metrics": [
+                    {
+                        "longest_alpha_helix": 10,
+                        "gyration_radius": 10.0 + index,
+                        "helix_pct": 40.0,
+                        "sheet_pct": 20.0,
+                        "loop_pct": 40.0,
+                    }
+                    for index, _ in enumerate(inputs["structures"])
+                ]
+            }
         elif tool == "minced-crispr":
             output = {
                 "results": [
