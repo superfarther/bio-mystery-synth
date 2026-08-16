@@ -72,7 +72,11 @@ class FakeRuntime:
         elif tool == "esmfold-prediction":
             output = {
                 "structures": [
-                    {"structure": f"MODEL {index}\nEND\n", "structure_format": "pdb"}
+                    {
+                        "structure": f"MODEL {index}\nEND\n",
+                        "structure_format": "pdb",
+                        "metrics": {"avg_plddt": 0.9 - index / 100, "ptm": 0.7, "avg_pae": 4.0},
+                    }
                     for index, _ in enumerate(inputs["complexes"])
                 ]
             }
@@ -96,8 +100,7 @@ class FakeRuntime:
         elif tool == "minced-crispr":
             output = {
                 "results": [
-                    {"sequence_id": f"seq_{index}", "crispr_arrays": []}
-                    for index in range(len(inputs["sequences"]))
+                    {"sequence_id": f"seq_{index}", "crispr_arrays": []} for index in range(len(inputs["sequences"]))
                 ]
             }
         elif tool == "mafft-align":
@@ -105,6 +108,129 @@ class FakeRuntime:
                 "metadata": {"num_sequences": len(inputs["sequences"])},
                 "msa": {"aligned_sequences": inputs["sequences"], "sequence_ids": inputs.get("sequence_ids")},
             }
+        elif tool == "orfipy-prediction":
+            output = {"results": [{"orfs": []} for _ in inputs["sequences"]]}
+        elif tool == "prodigal-prediction":
+            codons = {
+                "GCT": "A",
+                "TGT": "C",
+                "GAT": "D",
+                "GAA": "E",
+                "TTT": "F",
+                "GGT": "G",
+                "CAT": "H",
+                "ATT": "I",
+                "AAA": "K",
+                "CTG": "L",
+                "ATG": "M",
+                "AAT": "N",
+                "CCT": "P",
+                "CAA": "Q",
+                "CGT": "R",
+                "TCT": "S",
+                "ACT": "T",
+                "GTT": "V",
+                "TGG": "W",
+                "TAT": "Y",
+            }
+            results = []
+            prefix = "AGGAGGAAAA"
+            for sequence in inputs["input_sequences"]:
+                begin = sequence.find(prefix)
+                orfs = []
+                if begin >= 0:
+                    start = begin + len(prefix)
+                    stop = next(
+                        position
+                        for position in range(start + 3, len(sequence) - 2, 3)
+                        if sequence[position : position + 3] == "TAA"
+                    )
+                    protein = "".join(codons[sequence[position : position + 3]] for position in range(start, stop, 3))
+                    orfs.append(
+                        {
+                            "parent_id": "seq_0",
+                            "orf_id": "gene_1",
+                            "strand": "+",
+                            "frame": 1,
+                            "amino_acid_sequence": protein,
+                            "nucleotide_sequence": sequence[start : stop + 3],
+                            "amino_acid_length": len(protein),
+                            "nucleotide_length": stop + 3 - start,
+                            "nucleotide_start": start + 1,
+                            "nucleotide_end": stop + 3,
+                            "metrics": {},
+                        }
+                    )
+                results.append({"orfs": orfs})
+            output = {"results": results}
+        elif tool == "pyhmmer-phmmer":
+            output = {"sequence_hits": [], "domain_hits": [], "metadata": {}}
+        elif tool == "segmasker-score":
+            output = {
+                "results": [
+                    {
+                        "low_complexity_fraction": max(sequence.count(aa) for aa in set(sequence)) / len(sequence),
+                        "low_complexity_count": max(sequence.count(aa) for aa in set(sequence)),
+                        "sequence_length": len(sequence),
+                    }
+                    for sequence in inputs["sequences"]
+                ]
+            }
+        elif tool == "miranda-scan":
+            queries = config["mirna_queries"]
+            ids = config["mirna_ids"]
+            results = []
+            for target_index, target in enumerate(inputs["target_sequences"]):
+                sites = []
+                for mirna_id, query in zip(ids, queries, strict=True):
+                    dna = query.replace("U", "T")
+                    complement = dna.translate(str.maketrans("ACGT", "TGCA"))[::-1]
+                    start = target.find(complement)
+                    if start >= 0:
+                        sites.append(
+                            {
+                                "mirna_id": mirna_id,
+                                "score": 160.0,
+                                "energy": -30.0,
+                                "target_start": start + 1,
+                                "target_end": start + len(complement),
+                                "mirna_start": 1,
+                                "mirna_end": len(query),
+                                "alignment_length": len(query),
+                                "identity": 100.0,
+                                "similarity": 100.0,
+                            }
+                        )
+                results.append(
+                    {
+                        "target_id": f"target_{target_index}",
+                        "target_sequence": target,
+                        "target_sites": sites,
+                    }
+                )
+            output = {"results": results}
+        elif tool == "primer3-thermodynamics":
+            results = []
+            for index, oligo in enumerate(inputs["oligos"]):
+                sequence = oligo["sequence"]
+                gc = sum(base in "GC" for base in sequence) / len(sequence)
+                tm = 2 * sum(base in "AT" for base in sequence) + 4 * sum(base in "GC" for base in sequence)
+                results.append(
+                    {
+                        "oligo_id": f"oligo_{index}",
+                        "length": len(sequence),
+                        "tm": float(tm),
+                        "hairpin_dg": 0.0,
+                        "homodimer_dg": 0.0,
+                        "heterodimer_dg": 0.0,
+                        "gc_content": gc,
+                        "gc_clamp": sequence[-1] in "GC",
+                        "hairpin_structure_found": False,
+                        "homodimer_structure_found": False,
+                        "heterodimer_structure_found": False,
+                    }
+                )
+            output = {"results": results}
         else:
             raise ValueError(tool)
         self.calls.append(

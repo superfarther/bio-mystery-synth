@@ -17,6 +17,8 @@ from bio_mystery_synth.pipeline import CaseGenerator, validate_case
         "protein-bridge-triage",
         "crispr-spacer-linkage",
         "windowed-recombination",
+        "utr-regulatory-assay",
+        "metagenomic-enzyme-forensics",
     ],
 )
 def test_family_end_to_end(tmp_path: Path, family: str) -> None:
@@ -42,3 +44,26 @@ def test_validation_detects_public_leak(tmp_path: Path) -> None:
     errors = validate_case(generated.path)
     assert any("leaks dna_001" in error for error in errors)
     assert any("hash mismatch" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "family",
+    ["utr-regulatory-assay", "metagenomic-enzyme-forensics"],
+)
+def test_autonomous_questions_do_not_prescribe_tools(tmp_path: Path, family: str) -> None:
+    scenario = default_scenario(family, Difficulty.EASY, 17, Backend.LOCAL, "cpu")
+    generated = CaseGenerator(tmp_path).generate(scenario, runtime=FakeRuntime(17), case_id=f"case-{family}")
+    question = (generated.path / "public" / "question.md").read_text().lower()
+    forbidden = {
+        "orfipy",
+        "miranda",
+        "viennarna",
+        "primer3",
+        "prodigal",
+        "pyhmmer",
+        "segmasker",
+        "esmfold",
+        "num_recycles",
+        "max_batch_residues",
+    }
+    assert not {token for token in forbidden if token in question}
