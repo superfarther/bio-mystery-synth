@@ -1,0 +1,46 @@
+{
+  "backend": "local",
+  "case_id": "bms-dna-motif-localization-32a79cb05b3c",
+  "file_sha256": {
+    "motif.meme": "e8efe7838b601850f3d71ea5cfa96256a96a6d90a5f08b2cee58ed0a517d6a43",
+    "private/answer.json": "ecb1b568c59acdd7d6094f79c55ced6517d703cb826806ff007c9fb653e81b66",
+    "private/latent_truth.json": "cda78a54df31173c8d22d0408cc29be26d490114d488c2e8651c328cb61a8672",
+    "private/scenario.json": "c79844e2fbc58a16e45b08933bb9a089639e12e79a1c6016d53c3915bceb8c84",
+    "public/data/motif.meme": "e8efe7838b601850f3d71ea5cfa96256a96a6d90a5f08b2cee58ed0a517d6a43",
+    "public/data/sequences.fasta": "a418ba92995ff3e565aa7c740bfe992ab7756c892b9b6d316a8871e59e92145b",
+    "public/question.md": "831ab47999ca0fd1585da10c04ee03cbfb12d3c1a022de7a010b5b0583f4afda"
+  },
+  "public_files": [
+    "public/data/motif.meme",
+    "public/data/sequences.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 8160553,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 8,
+        "gc_fraction": 0.5,
+        "length": 500
+      },
+      "device": "cpu",
+      "duration_seconds": 7.165738,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "both_strands": true,
+        "threshold": 0.0001
+      },
+      "device": "cpu",
+      "duration_seconds": 207.307705,
+      "ok": true,
+      "tool": "meme-fimo-scan"
+    }
+  ]
+}

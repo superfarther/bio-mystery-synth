@@ -1,0 +1,14 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_007:368-374:+"
+      ],
+      "field": "motif_hits",
+      "kind": "unordered_set"
+    }
+  ],
+  "oracle_type": "injected_truth",
+  "rubric_text": "Credit requires exactly these sample, 1-based interval, and strand tuples: Sample_007:368-374:+",
+  "schema_version": "1"
+}

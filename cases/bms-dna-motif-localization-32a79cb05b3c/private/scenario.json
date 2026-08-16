@@ -1,0 +1,30 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "easy",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cpu",
+    "tool_overrides": {}
+  },
+  "family": {
+    "fimo_threshold": 0.0001,
+    "gc_fraction": 0.5,
+    "kind": "dna-motif-localization",
+    "motif": "ACGTGCA",
+    "num_decoys": 2,
+    "num_sequences": 8,
+    "num_targets": 1,
+    "sequence_length": 500
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 8160553,
+  "source": "closed-world"
+}

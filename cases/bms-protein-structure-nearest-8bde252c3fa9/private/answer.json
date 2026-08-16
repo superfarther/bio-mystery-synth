@@ -1,0 +1,18 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_002",
+        "Sample_004",
+        "Sample_001",
+        "Sample_003"
+      ],
+      "field": "structure_similarity",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires this complete descending reference-normalized TM-score ranking: Sample_002 > Sample_004 > Sample_001 > Sample_003",
+  "schema_version": "1"
+}

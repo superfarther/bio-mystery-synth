@@ -1,0 +1,35 @@
+{
+  "anonymization_map": {
+    "protein_001": "Sample_002",
+    "protein_002": "Sample_001",
+    "protein_003": "Sample_004",
+    "protein_004": "Sample_003"
+  },
+  "evidence": {
+    "alignment_tool": "tmalign-alignment",
+    "prediction_tool": "esmfold-prediction"
+  },
+  "facts": {
+    "candidate_sequences": {
+      "protein_001": "IEENVPFTVQNTICREMKHCWVQFSECFHYVIIRNGGSITFAPEPRQGCNNPRYPWPNHWYHMAIVISECDGMCIRKGTIMDPNQQKLYL",
+      "protein_002": "IEHPSPEDIQNTFCREMKHCWVQFSECVHYCVIRHGGLITEAKQPRFGANNPRYNWPGMWYQMAIPESECDGMCIRKGTLMDSAQPKKYL",
+      "protein_003": "DEERVPFDIQNTFCREMKCCWVPFPECFMAVDFRHDGSINKAGSKRSGENNYAYPANWMEYYMARCESTCDGPYIRKHTISDPFQPKGFL",
+      "protein_004": "ITHNVPFRIQFTNCRERKCCWPQSSEWPHYVLGRHGGSISFMPELQQGLPPLRYRMHDRWYPHVINESFVVGLNIGKVARMEVTQRKGYL"
+    },
+    "ranking": [
+      "Sample_002",
+      "Sample_004",
+      "Sample_001",
+      "Sample_003"
+    ],
+    "reference_sequence": "IEENVPFDIQNTFCREMKHCWVQFSECFHYVIIRHGGSITFAPEPRQGENNPRYPWPNYWYHMAIVESECDGMCIRKGTIMDPAQPKGYL",
+    "tm_scores": {
+      "Sample_001": 0.29351,
+      "Sample_002": 0.37702,
+      "Sample_003": 0.27923,
+      "Sample_004": 0.3388
+    }
+  },
+  "oracle_type": "model_defined",
+  "schema_version": "1"
+}

@@ -1,0 +1,93 @@
+{
+  "backend": "local",
+  "case_id": "bms-protein-structure-nearest-8bde252c3fa9",
+  "file_sha256": {
+    "private/answer.json": "433e867c02026347904e89469caf184dcde58030d4602da258a67d6fda4f4b6c",
+    "private/latent_truth.json": "8c7040205f91f571da15915f76be090d1db836aa164d32a888163870df536e48",
+    "private/scenario.json": "56dc9526797af461b355ab3bc2178a29d2f79611367ca0c3a6fb389d799f057a",
+    "public/data/candidates/Sample_001.pdb": "b08678072b60eaf4d7879ea6b9e2d29e377ad3e4b51f3854e0fc0b50b882f1b1",
+    "public/data/candidates/Sample_002.pdb": "7c5584702e1c1df9517a0b6a0c2bcb34b04c3bf6233728b2deac1971aa11fb62",
+    "public/data/candidates/Sample_003.pdb": "1c1324c931dce73c4866bc0ccb78d38b944547b27816253dffabe357cf8238a1",
+    "public/data/candidates/Sample_004.pdb": "5d27149bd44f633ebf5435f20a7d87f9c59ebc6d8f32e055df1e199abda4f67f",
+    "public/data/reference.pdb": "b19f0d772d27a74a3fb7d47e0e471e57f116c39bc7f6706e4da2dee393734bea",
+    "public/data/sequences.fasta": "ee8fac149b8330236a10bb2ec1d62d7125c893c15964fe0dd245b0bfa4b865f3",
+    "public/question.md": "1cb0c93e630959f10abd2fa8823bebd9d0fb4eb260920e71e9f8ff74235e07f5"
+  },
+  "public_files": [
+    "public/data/candidates/Sample_001.pdb",
+    "public/data/candidates/Sample_002.pdb",
+    "public/data/candidates/Sample_003.pdb",
+    "public/data/candidates/Sample_004.pdb",
+    "public/data/reference.pdb",
+    "public/data/sequences.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 8160622,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 90
+      },
+      "device": "cuda",
+      "duration_seconds": 3.191278,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "codon_scheme": "UNIFORM",
+        "seed": 8160623
+      },
+      "device": "cuda",
+      "duration_seconds": 0.000476,
+      "ok": true,
+      "tool": "random-protein-sample"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 158.34998,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.685506,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.070457,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.070242,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.070217,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    }
+  ]
+}
