@@ -1,0 +1,139 @@
+{
+  "backend": "local",
+  "case_id": "bms-profile-fold-rescue-2026081602",
+  "file_sha256": {
+    "private/answer.json": "61e60d31084345a724670d2b0d43dafbfaf9037cb612e7d9adf79e3e14fd736e",
+    "private/latent_truth.json": "dc7d5d7841e0bc354dda7e7d3e95435b619567143141cb309bd46a120bc2c476",
+    "private/scenario.json": "c926a6d8e467f060b9d59b8af59be80b36ee0e85d88acbcc23005058bc3402bb",
+    "public/data/candidates.fasta": "6846b961031ae5d2ebf9761da294c8b3a2763e8be744df3e2e33262cfb0c027c",
+    "public/data/family_profile.hmm": "0980fcc2612e97679a2ec5adc9bd79d315ee10663b2bb3340b9ea4b13b619aed",
+    "public/data/profile_seeds.fasta": "54a5cad650f71f2dde724da933196a0496466f03cbe51adc4141e9de332d81a7",
+    "public/data/reference_fold.pdb": "b9b53acbb2306544fd8df8fa86b92c8d4b4f70d48131771c253bf3212883ff16",
+    "public/question.md": "cd9128b68fba45f9227cebffd436c2662bdb8cfc5e3d20e97a8aec37cbabb293",
+    "synthetic_fold_family.hmm": "0980fcc2612e97679a2ec5adc9bd79d315ee10663b2bb3340b9ea4b13b619aed"
+  },
+  "public_files": [
+    "public/data/candidates.fasta",
+    "public/data/family_profile.hmm",
+    "public/data/profile_seeds.fasta",
+    "public/data/reference_fold.pdb",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081602,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "align_method": "auto",
+        "max_iterations": 100,
+        "threads": 2
+      },
+      "device": "cpu",
+      "duration_seconds": 3.337889,
+      "ok": true,
+      "tool": "mafft-align"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "domain_evalue_threshold": 10.0,
+        "evalue_threshold": 10.0,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 0.133326,
+      "ok": true,
+      "tool": "pyhmmer-hmmsearch"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1200,
+        "num_recycles": 4
+      },
+      "device": "cuda",
+      "duration_seconds": 127.891245,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "alignment_type": 1,
+        "cov": 0.7,
+        "num_threads": 4,
+        "tmscore_threshold": 0.35
+      },
+      "device": "cpu",
+      "duration_seconds": 5.186131,
+      "ok": true,
+      "tool": "foldseek-cluster"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 9.953628,
+      "ok": true,
+      "tool": "dssp-secondary-structure"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.071508,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.06901,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.069942,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.068967,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.069811,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.068689,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.07002,
+      "ok": true,
+      "tool": "usalign-alignment"
+    }
+  ]
+}

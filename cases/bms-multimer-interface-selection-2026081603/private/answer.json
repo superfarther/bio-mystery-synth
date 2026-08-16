@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_001",
+        "Sample_009",
+        "Sample_008"
+      ],
+      "field": "top_three",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires the top three binders in order: Sample_001 > Sample_009 > Sample_008",
+  "schema_version": "1"
+}

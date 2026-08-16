@@ -1,0 +1,25 @@
+{
+  "assertions": [
+    {
+      "case_sensitive": false,
+      "expected": "Sample_009",
+      "field": "sample",
+      "kind": "exact"
+    },
+    {
+      "case_sensitive": false,
+      "expected": 1690,
+      "field": "tss",
+      "kind": "exact"
+    },
+    {
+      "case_sensitive": false,
+      "expected": "1811-2263",
+      "field": "orf_interval",
+      "kind": "exact"
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires Sample_009, TSS 1690, and ORF interval 1811-2263.",
+  "schema_version": "1"
+}

@@ -1,0 +1,19 @@
+{
+  "assertions": [
+    {
+      "case_sensitive": false,
+      "expected": "Sample_001",
+      "field": "receptor",
+      "kind": "exact"
+    },
+    {
+      "case_sensitive": false,
+      "expected": "Compound_01",
+      "field": "compound",
+      "kind": "exact"
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires receptor Sample_001 and ligand Compound_01.",
+  "schema_version": "1"
+}

@@ -1,0 +1,26 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_006",
+        "Sample_002",
+        "Sample_005",
+        "Sample_010",
+        "Sample_012",
+        "Sample_011",
+        "Sample_009"
+      ],
+      "field": "shortlist",
+      "kind": "unordered_set"
+    },
+    {
+      "case_sensitive": false,
+      "expected": "Sample_002",
+      "field": "winner",
+      "kind": "exact"
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires shortlist Sample_006, Sample_002, Sample_005, Sample_010, Sample_012, Sample_011, Sample_009 and winner Sample_002.",
+  "schema_version": "1"
+}

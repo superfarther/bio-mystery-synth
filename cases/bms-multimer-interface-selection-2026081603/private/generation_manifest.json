@@ -1,0 +1,256 @@
+{
+  "backend": "local",
+  "case_id": "bms-multimer-interface-selection-2026081603",
+  "file_sha256": {
+    "private/answer.json": "5da077cb1dfea61c38a69ea406587398440a45705b4dac0871b089797298086e",
+    "private/latent_truth.json": "be733761dba54c40da21363cd40ab91dc9704f9a25c2b16367dd694c078f35f5",
+    "private/scenario.json": "8075a3368c79ee2613817bcaafdac52e4861805357c38061815fc259c268edf9",
+    "public/data/binders.fasta": "ec635d99678878da40802e90b6891efb833b37f477cc5e57eaae3f111ef1b339",
+    "public/data/target.fasta": "98ecb41aa5a20823861ee71c1d1e66b46e68d2a84f676db6c104e50de4569e4c",
+    "public/question.md": "8a796c7e94db0dd6103d8001043bbd4ec603ac952911ae04cd7f977606f39aa3"
+  },
+  "public_files": [
+    "public/data/binders.fasta",
+    "public/data/target.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081603,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "cluster_mode": 0,
+        "coverage": 0.8,
+        "extra_args": [
+          "--threads",
+          "4"
+        ],
+        "min_seq_id": 0.55,
+        "timeout": 180
+      },
+      "device": "cpu",
+      "duration_seconds": 5.836418,
+      "ok": true,
+      "tool": "mmseqs2-clustering"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "include_pae_matrix": true,
+        "max_batch_residues": 1400,
+        "num_recycles": 6
+      },
+      "device": "cuda",
+      "duration_seconds": 146.204675,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "chain_tm_threshold": 0.2,
+        "interface_lddt_threshold": 0.35,
+        "multimer_tm_threshold": 0.55,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 2.449614,
+      "ok": true,
+      "tool": "foldseek-multimercluster"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.953497,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010176,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.247173,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010623,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.248163,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.009677,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.247437,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010573,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.248356,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.00973,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.247498,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010305,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.25281,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.011524,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.247696,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010325,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.248429,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.009689,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.247549,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.009416,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.297777,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.009163,
+      "ok": true,
+      "tool": "pdockq2"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.248539,
+      "ok": true,
+      "tool": "ipsae-scoring"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.010927,
+      "ok": true,
+      "tool": "pdockq2"
+    }
+  ]
+}

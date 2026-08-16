@@ -1,0 +1,9 @@
+compound	smiles
+Compound_01	Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1
+Compound_02	CN1CCN(CC1)Cc1ccc(cc1)C(=O)Nc1ccc(C)cc1
+Compound_03	CCOC(=O)c1ccc(Nc2ncccn2)cc1
+Compound_04	CC(=O)Nc1ccc(O)cc1
+Compound_05	COc1ccc2nc(NC(=O)c3ccccc3)sc2c1
+Compound_06	CCN(CC)CCOc1ccc2ncnc(Nc3ccc(F)c(Cl)c3)c2c1
+Compound_07	c1ccc2[nH]c(C3CCNCC3)nc2c1
+Compound_08	CC(C)c1nc(Nc2ccc(F)cc2)ncc1C(=O)N

@@ -1,0 +1,98 @@
+{
+  "backend": "local",
+  "case_id": "bms-promoter-cassette-forensics-2026081601",
+  "file_sha256": {
+    "private/answer.json": "7d160739bf68001b43c0a34109fbf6201ea0d2fdb090e9d343e30216c5dc9802",
+    "private/latent_truth.json": "35031752cf68cca221e84bc0a6a088efb0f0c3834f5c47ce99bdff8e2f52c4c3",
+    "private/scenario.json": "3614bd37a4fffadfb38a9dd7b7e349ce1e70b5806c18a03cda635d127fc7751a",
+    "public/data/cassettes.fasta": "20502bca948162a1bca40de91cdb252885f263579ec0a4df0ceaa9bb7e72a0c1",
+    "public/data/family_marker.fasta": "7c7438bf4a755042be24cef7c0258bc1f1ed76f8d8efc594c75f868beb1e8c04",
+    "public/question.md": "3f4cecb246687c5625a63d4869065f1a129644b77966f163538c08b0f07ee953"
+  },
+  "public_files": [
+    "public/data/cassettes.fasta",
+    "public/data/family_marker.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081601,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 150
+      },
+      "device": "cpu",
+      "duration_seconds": 21.153634,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 18,
+        "gc_fraction": 0.5,
+        "length": 3600
+      },
+      "device": "cpu",
+      "duration_seconds": 0.179278,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "closed_ends": false,
+        "meta_mode": true,
+        "min_gene": 90,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 5.799913,
+      "ok": true,
+      "tool": "prodigal-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "domain_evalue_threshold": 0.001,
+        "evalue_threshold": 0.001,
+        "inclusion_domain_evalue_threshold": 0.001,
+        "inclusion_evalue_threshold": 0.001,
+        "max_iterations": 4,
+        "num_threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 0.647186,
+      "ok": true,
+      "tool": "pyhmmer-jackhmmer"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "domain_evalue_threshold": 0.001,
+        "evalue_threshold": 0.001,
+        "num_threads": 4,
+        "strand": "both"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.473522,
+      "ok": true,
+      "tool": "pyhmmer-nhmmer"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "circular": false,
+        "threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 31.031158,
+      "ok": true,
+      "tool": "promoter-calculator"
+    }
+  ]
+}

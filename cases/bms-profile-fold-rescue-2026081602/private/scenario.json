@@ -1,0 +1,25 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda",
+    "tool_overrides": {}
+  },
+  "family": {
+    "kind": "profile-fold-rescue",
+    "num_candidates": 14,
+    "shortlist_size": 7
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 2026081602,
+  "source": "closed-world"
+}

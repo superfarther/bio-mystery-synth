@@ -1,0 +1,215 @@
+{
+  "backend": "local",
+  "case_id": "bms-conformation-ligand-triage-2026081604",
+  "file_sha256": {
+    "private/answer.json": "3cbdef7cf3d57c56cfbef055763fcee041a8817476f325cd92c989ca29097159",
+    "private/latent_truth.json": "86c467d5fa0d6fb4841904a729a613711b93143c7005ef8067d9e2ced56ee16f",
+    "private/scenario.json": "f0884750e9c1261008bae2e60731ce3cb0929603c94b95a33e3d26384534a3f4",
+    "public/data/binding_scaffold.pdb": "550b4ff6cd6b049824eadbf00eb90c1d588493a30dfca8b2be22dd592e327c00",
+    "public/data/compounds.tsv": "6f2353a675846764a0d2921f6ca1a2572786ed8a9dfe96b262ea796adbb51073",
+    "public/data/receptor_candidates/Sample_001.pdb": "665fa17848efca0d9e82e1874b6ed3fec33701cef818a8909d2e82bb2fea3f83",
+    "public/data/receptor_candidates/Sample_002.pdb": "0b496e9d625bbc6480d8bbf6438b85c4eaf50b77709480721515c1a2b367d436",
+    "public/data/receptor_candidates/Sample_003.pdb": "68f1aabc7ae34f53ba6867a81d99c99ebafa13c86613a7a2adc71d32b7a654fc",
+    "public/data/receptor_candidates/Sample_004.pdb": "00144931e01a2c1773c2921cc08495fbd129d481545604493cf56966615c5f27",
+    "public/data/receptor_candidates/Sample_005.pdb": "c67c1e760116ad011635975903fc221da8163bbfa994c42a861459ba50952cc3",
+    "public/data/receptor_candidates/Sample_006.pdb": "ecf8cbc64613a2aa4908a6cba2b5b514434afea700b4f692ae44b9a1fa9bcbce",
+    "public/data/receptor_candidates/Sample_007.pdb": "6ec17d06c56e43622858fef991c7121959720f1a46f2a8084c1b7e8b3ab8f62a",
+    "public/data/receptor_sequences.fasta": "ff5cc39725f5b88a84b88dc5e66de15858afd62e288e34dc9079294fbad28cb9",
+    "public/data/reference_state.pdb": "a5b76669af6db7e74f78e8c6757f5c28bba21548cac324f967fc122f20e24714",
+    "public/data/site_residues.tsv": "fb88f364db4b0ebad626739af6c1d280c8ac3183f600af1c55974a2e38f55a5c",
+    "public/question.md": "b5ec4a9af6c7d1d77fcc440a81e41287fb79352418637f0196e127a672f5ba53"
+  },
+  "public_files": [
+    "public/data/binding_scaffold.pdb",
+    "public/data/compounds.tsv",
+    "public/data/receptor_candidates/Sample_001.pdb",
+    "public/data/receptor_candidates/Sample_002.pdb",
+    "public/data/receptor_candidates/Sample_003.pdb",
+    "public/data/receptor_candidates/Sample_004.pdb",
+    "public/data/receptor_candidates/Sample_005.pdb",
+    "public/data/receptor_candidates/Sample_006.pdb",
+    "public/data/receptor_candidates/Sample_007.pdb",
+    "public/data/receptor_sequences.fasta",
+    "public/data/reference_state.pdb",
+    "public/data/site_residues.tsv",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 2026081604,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "max_batch_residues": 1400,
+        "num_recycles": 6
+      },
+      "device": "cuda",
+      "duration_seconds": 170.052346,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 12.964955,
+      "ok": true,
+      "tool": "dssp-secondary-structure"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.177089,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.225561,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.17649,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.225515,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.124632,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.225467,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.175755,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.225366,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.175726,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.226042,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.175686,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.22608,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cpu",
+      "duration_seconds": 0.175926,
+      "ok": true,
+      "tool": "usalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "method": "align",
+        "mobile_selection": "mobile and name CA",
+        "target_selection": "target and name CA"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.226361,
+      "ok": true,
+      "tool": "pymol-rmsd-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "cpu": 4,
+        "energy_range": 4.0,
+        "exhaustiveness": 6,
+        "num_poses": 4,
+        "seed": 2026081635
+      },
+      "device": "cpu",
+      "duration_seconds": 47.265092,
+      "ok": true,
+      "tool": "vina-docking"
+    }
+  ]
+}

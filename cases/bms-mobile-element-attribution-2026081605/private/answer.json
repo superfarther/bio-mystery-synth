@@ -1,0 +1,25 @@
+{
+  "assertions": [
+    {
+      "case_sensitive": false,
+      "expected": "Sample_008",
+      "field": "host",
+      "kind": "exact"
+    },
+    {
+      "case_sensitive": false,
+      "expected": "4001-5700",
+      "field": "element_interval",
+      "kind": "exact"
+    },
+    {
+      "case_sensitive": false,
+      "expected": "+",
+      "field": "orientation",
+      "kind": "exact"
+    }
+  ],
+  "oracle_type": "injected_truth",
+  "rubric_text": "Credit requires host Sample_008, interval 4001-5700, and forward orientation.",
+  "schema_version": "1"
+}

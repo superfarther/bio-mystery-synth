@@ -52,7 +52,7 @@
 
 ## 仓库布局
 
-本项目依赖 `proto-language` 和 `proto-tools` 的本地源码。三个仓库必须位于同一个顶层目录下，名称保持如下：
+本项目依赖 [proto-language](https://github.com/evo-design/proto-language) 和 [proto-language](https://github.com/evo-design/proto-tools) 的本地源码。三个仓库必须位于同一个顶层目录下，名称保持如下：
 
 ```text
 <workspace>/
@@ -145,6 +145,11 @@ crispr-spacer-linkage: minced-crispr
 windowed-recombination: mafft-align
 utr-regulatory-assay: orfipy-prediction, miranda-scan, viennarna-prediction, primer3-thermodynamics
 metagenomic-enzyme-forensics: prodigal-prediction, pyhmmer-phmmer, esmfold-prediction, structure-metrics, tmalign-alignment
+promoter-cassette-forensics: prodigal-prediction, pyhmmer-jackhmmer, pyhmmer-nhmmer, promoter-calculator
+profile-fold-rescue: mafft-align, pyhmmer-hmmsearch, esmfold-prediction, foldseek-cluster, dssp-secondary-structure, usalign-alignment
+multimer-interface-selection: mmseqs2-clustering, esmfold-prediction, foldseek-multimercluster, ipsae-scoring, pdockq2
+conformation-ligand-triage: esmfold-prediction, usalign-alignment, pymol-rmsd-alignment, dssp-secondary-structure, vina-docking
+mobile-element-attribution: mmseqs2-search-genomes, pyhmmer-nhmmer, blast-create-db, blast-search, prodigal-prediction
 [promoter-context]: promoter-calculator
 [profile-and-local-homology]: pyhmmer-hmmscan, pyhmmer-hmmsearch, pyhmmer-jackhmmer, pyhmmer-nhmmer, blast-create-db, blast-search, mmseqs2-clustering, mmseqs2-search-genomes
 [structure-comparison]: foldseek-cluster, foldseek-multimercluster, pymol-rmsd-alignment, usalign-alignment, dssp-secondary-structure
