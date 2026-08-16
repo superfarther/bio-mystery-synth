@@ -1,5 +1,21 @@
 # bio-mystery-synth
 
+技术文档：[technical_report.md](/share/org/YZWL/yzwl_yuanzh/work/kimi-work/bio-mystery-synth/technical_report.md)
+
+## 目录
+
+- [数据生成 Pipeline](#数据生成-pipeline)
+- [仓库布局](#仓库布局)
+- [环境配置](#环境配置)
+- [工具目录](#工具目录)
+- [项目目录结构](#项目目录结构)
+- [项目输入](#项目输入)
+  - [使用默认场景生成一个 case](#使用默认场景生成一个-case)
+  - [使用自然语言描述规划场景](#使用自然语言描述规划场景)
+  - [使用 YAML 批量生成](#使用-yaml-批量生成)
+- [输出结构](#输出结构)
+- [扩展任务族、工具与数据源](#扩展任务族工具与数据源)
+
 ## 数据生成 Pipeline
 
 从输入配置到最终 case，数据会依次经过以下步骤：
