@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import fasta, reverse_complement
+from bio_mystery_synth.core import (
     AnswerSpec,
-    CrisprLinkageFamilySpec,
+    Difficulty,
     FamilyResult,
     GroundTruth,
     OracleType,
@@ -15,9 +15,10 @@ from bio_mystery_synth.models import (
     ScenarioSpec,
     SetAssertion,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, fasta, reverse_complement
+from bio_mystery_synth.task_families.specs import CrisprLinkageFamilySpec
 
 
 def _random_dna(rng: random.Random, length: int) -> str:
@@ -27,8 +28,25 @@ def _random_dna(rng: random.Random, length: int) -> str:
 @register
 class CrisprLinkageFamily:
     family_id = "crispr-spacer-linkage"
+    config_model = CrisprLinkageFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_genomes=8, genome_length=10_000, num_targets=1, num_decoys=2),
+        Difficulty.MEDIUM: dict(num_genomes=24, genome_length=50_000, num_targets=3, num_decoys=6),
+        Difficulty.HARD: dict(
+            num_genomes=48,
+            genome_length=100_000,
+            phage_length=30_000,
+            num_targets=4,
+            num_decoys=12,
+            num_repeats=10,
+            linked_spacers=5,
+        ),
+    }
+    tools = ("minced-crispr",)
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, CrisprLinkageFamilySpec):

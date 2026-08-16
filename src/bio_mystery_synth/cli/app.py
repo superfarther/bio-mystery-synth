@@ -1,5 +1,3 @@
-"""Command-line interface."""
-
 from __future__ import annotations
 
 import secrets
@@ -9,36 +7,15 @@ from typing import Annotated, Literal
 
 import typer
 import yaml
-from pydantic import Field
 
-from bio_mystery_synth.factory import default_scenario
-from bio_mystery_synth.llm import OpenAILLMClient, QuestionWriter, ScenarioPlanner
-from bio_mystery_synth.models import Backend, CaseIndexEntry, Difficulty, ScenarioSpec, StrictModel
-from bio_mystery_synth.pipeline import CaseGenerator, validate_case, write_index
-from bio_mystery_synth.runtime import DECLARED_TOOLS, capability_catalog
+from bio_mystery_synth.authoring import OpenAILLMClient, QuestionWriter, ScenarioPlanner
+from bio_mystery_synth.cli.config import BatchConfig
+from bio_mystery_synth.core import Backend, CaseIndexEntry, Difficulty, ScenarioSpec
+from bio_mystery_synth.generation import CaseGenerator, default_scenario, validate_case, write_index
+from bio_mystery_synth.runtime import capability_catalog
+from bio_mystery_synth.task_families.registry import family_definitions
 
 app = typer.Typer(no_args_is_help=True)
-
-
-class BatchJob(StrictModel):
-    family: str
-    difficulty: Difficulty = Difficulty.MEDIUM
-    count: int = Field(default=1, ge=1)
-    seed: int = Field(default=0, ge=0)
-    backend: Backend = Backend.LOCAL
-    local_device: str = "cuda"
-
-
-class LLMSettings(StrictModel):
-    provider: Literal["none", "openai"] = "none"
-    model: str | None = None
-
-
-class BatchConfig(StrictModel):
-    output_root: Path = Path(".")
-    max_workers: int = Field(default=1, ge=1)
-    llm: LLMSettings = Field(default_factory=LLMSettings)
-    jobs: list[BatchJob]
 
 
 def _writer(provider: str, model: str | None) -> QuestionWriter:
@@ -99,7 +76,7 @@ def batch(config: Annotated[Path, typer.Option(exists=True, dir_okay=False)]) ->
 
 @app.command("list-families")
 def list_families() -> None:
-    for family in sorted(DECLARED_TOOLS):
+    for family in sorted(family_definitions()):
         typer.echo(family)
 
 

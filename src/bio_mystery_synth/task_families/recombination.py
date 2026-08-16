@@ -3,21 +3,22 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import fasta
+from bio_mystery_synth.core import (
     AnswerSpec,
+    Difficulty,
     FamilyResult,
     GroundTruth,
     OracleType,
     QuestionContext,
-    RecombinationFamilySpec,
     ScenarioSpec,
     SetAssertion,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, fasta
+from bio_mystery_synth.task_families.specs import RecombinationFamilySpec
 
 
 def _mutate(sequence: str, count: int, rng: random.Random) -> str:
@@ -40,8 +41,17 @@ def _assign_windows(sequence: str, reference_a: str, reference_b: str, size: int
 @register
 class RecombinationFamily:
     family_id = "windowed-recombination"
+    config_model = RecombinationFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_candidates=12, sequence_length=1000, num_recombinants=1, window_size=100),
+        Difficulty.MEDIUM: dict(num_candidates=48, sequence_length=4000, num_recombinants=3, window_size=200),
+        Difficulty.HARD: dict(num_candidates=96, sequence_length=8000, num_recombinants=5, window_size=250),
+    }
+    tools = ("mafft-align",)
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, RecombinationFamilySpec):

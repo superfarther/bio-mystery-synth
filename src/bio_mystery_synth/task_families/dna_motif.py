@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import fasta, reverse_complement
+from bio_mystery_synth.core import (
     AnswerSpec,
-    DNAMotifFamilySpec,
+    Difficulty,
     FamilyResult,
     GroundTruth,
     OracleType,
@@ -15,9 +15,10 @@ from bio_mystery_synth.models import (
     ScenarioSpec,
     SetAssertion,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, fasta, reverse_complement
+from bio_mystery_synth.task_families.specs import DNAMotifFamilySpec
 
 
 def _meme(motif: str) -> str:
@@ -47,8 +48,17 @@ def _replace_exact(sequence: str, motif: str) -> str:
 @register
 class DNAMotifFamily:
     family_id = "dna-motif-localization"
+    config_model = DNAMotifFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_sequences=8, sequence_length=500, num_targets=1, num_decoys=2),
+        Difficulty.MEDIUM: dict(num_sequences=16, sequence_length=1000, num_targets=2, num_decoys=3),
+        Difficulty.HARD: dict(num_sequences=96, sequence_length=20_000, num_targets=8, num_decoys=24),
+    }
+    tools = ("random-nucleotide-sample", "meme-fimo-scan")
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         config = spec.family
         if not isinstance(config, DNAMotifFamilySpec):
             raise TypeError("invalid DNA motif family spec")

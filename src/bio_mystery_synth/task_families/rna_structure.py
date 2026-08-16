@@ -3,28 +3,38 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import base_pairs, fasta, jaccard
+from bio_mystery_synth.core import (
     AnswerSpec,
+    Difficulty,
     FamilyResult,
     GroundTruth,
     OracleType,
     QuestionContext,
     RankingAssertion,
-    RNAStructureFamilySpec,
     ScenarioSpec,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, base_pairs, fasta, jaccard
+from bio_mystery_synth.task_families.specs import RNAStructureFamilySpec
 
 
 @register
 class RNAStructureFamily:
     family_id = "rna-structure-ranking"
+    config_model = RNAStructureFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_candidates=5, sequence_length=80),
+        Difficulty.MEDIUM: dict(num_candidates=8, sequence_length=120),
+        Difficulty.HARD: dict(num_candidates=48, sequence_length=600),
+    }
+    tools = ("random-nucleotide-sample", "viennarna-prediction")
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, RNAStructureFamilySpec):

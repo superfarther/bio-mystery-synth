@@ -1,86 +1,20 @@
-"""Closed-world proto-tools catalog."""
+"""Compatibility exports for the tool catalog."""
 
-from __future__ import annotations
+from bio_mystery_synth.task_families.registry import family_definitions
+from bio_mystery_synth.tools.catalog import CURATED_TOOLS, TOOL_GROUPS
+from bio_mystery_synth.tools.policy import (
+    CLOSED_WORLD_CONFIG,
+    CLOSED_WORLD_REQUIRED_CONFIG,
+    apply_closed_world_config,
+)
 
-from itertools import chain
-from typing import Any
+FAMILY_TOOLS = {key: list(value.tools) for key, value in family_definitions().items()}
 
-FAMILY_TOOLS = {
-    "dna-motif-localization": ["random-nucleotide-sample", "meme-fimo-scan"],
-    "rna-structure-ranking": ["random-nucleotide-sample", "viennarna-prediction"],
-    "protein-structure-nearest": [
-        "random-protein-sample",
-        "esmfold-prediction",
-        "tmalign-alignment",
-    ],
-    "protein-bridge-triage": [
-        "random-protein-sample",
-        "esmfold-prediction",
-        "structure-metrics",
-        "tmalign-alignment",
-        "mafft-align",
-    ],
-    "crispr-spacer-linkage": ["minced-crispr"],
-    "windowed-recombination": ["mafft-align"],
-    "utr-regulatory-assay": [
-        "orfipy-prediction",
-        "miranda-scan",
-        "viennarna-prediction",
-        "primer3-thermodynamics",
-    ],
-    "metagenomic-enzyme-forensics": [
-        "prodigal-prediction",
-        "pyhmmer-phmmer",
-        "esmfold-prediction",
-        "structure-metrics",
-        "tmalign-alignment",
-    ],
-}
-
-TOOL_GROUPS = {
-    "promoter-context": ["promoter-calculator"],
-    "profile-and-local-homology": [
-        "pyhmmer-hmmscan",
-        "pyhmmer-hmmsearch",
-        "pyhmmer-jackhmmer",
-        "pyhmmer-nhmmer",
-        "blast-create-db",
-        "blast-search",
-        "mmseqs2-clustering",
-        "mmseqs2-search-genomes",
-    ],
-    "structure-comparison": [
-        "foldseek-cluster",
-        "foldseek-multimercluster",
-        "pymol-rmsd-alignment",
-        "usalign-alignment",
-        "dssp-secondary-structure",
-    ],
-    "molecular-interaction": [
-        "vina-docking",
-        "ipsae-scoring",
-        "pdockq2",
-    ],
-}
-
-CLOSED_WORLD_CONFIG = {
-    "blast-search": {"search_mode": "local"},
-}
-
-CLOSED_WORLD_REQUIRED_CONFIG = {
-    "blast-search": ("local_db",),
-}
-
-CURATED_TOOLS = frozenset(chain.from_iterable([*FAMILY_TOOLS.values(), *TOOL_GROUPS.values()]))
-
-
-def apply_closed_world_config(tool: str, config: dict[str, Any]) -> dict[str, Any]:
-    merged = dict(config)
-    for key, required in CLOSED_WORLD_CONFIG.get(tool, {}).items():
-        actual = merged.setdefault(key, required)
-        if actual != required:
-            raise ValueError(f"closed-world generation requires {tool}.{key}={required!r}")
-    missing = [key for key in CLOSED_WORLD_REQUIRED_CONFIG.get(tool, ()) if not merged.get(key)]
-    if missing:
-        raise ValueError(f"closed-world generation requires {tool} config: {', '.join(missing)}")
-    return merged
+__all__ = [
+    "CLOSED_WORLD_CONFIG",
+    "CLOSED_WORLD_REQUIRED_CONFIG",
+    "CURATED_TOOLS",
+    "FAMILY_TOOLS",
+    "TOOL_GROUPS",
+    "apply_closed_world_config",
+]

@@ -3,44 +3,22 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import CODONS, fasta, reverse_complement
+from bio_mystery_synth.core import (
     AnswerSpec,
+    Difficulty,
     ExactAssertion,
     FamilyResult,
     GroundTruth,
     OracleType,
     QuestionContext,
     ScenarioSpec,
-    UTRRegulatoryAssayFamilySpec,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, fasta, reverse_complement
-
-CODONS = {
-    "A": "GCT",
-    "C": "TGT",
-    "D": "GAT",
-    "E": "GAA",
-    "F": "TTT",
-    "G": "GGT",
-    "H": "CAT",
-    "I": "ATT",
-    "K": "AAA",
-    "L": "CTG",
-    "M": "ATG",
-    "N": "AAT",
-    "P": "CCT",
-    "Q": "CAA",
-    "R": "CGT",
-    "S": "TCT",
-    "T": "ACT",
-    "V": "GTT",
-    "W": "TGG",
-    "Y": "TAT",
-}
+from bio_mystery_synth.task_families.specs import UTRRegulatoryAssayFamilySpec
 
 
 def _coding_sequence(protein: str) -> str:
@@ -67,8 +45,23 @@ def _primer_penalty(forward: dict[str, object], reverse: dict[str, object]) -> f
 @register
 class UTRRegulatoryAssayFamily:
     family_id = "utr-regulatory-assay"
+    config_model = UTRRegulatoryAssayFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_transcripts=8, coding_aa_length=90, utr_length=200, num_mirnas=2),
+        Difficulty.MEDIUM: dict(num_transcripts=12, coding_aa_length=120, utr_length=280, num_mirnas=3),
+        Difficulty.HARD: dict(
+            num_transcripts=20,
+            coding_aa_length=160,
+            utr_length=420,
+            num_mirnas=5,
+            primer_pairs_per_transcript=5,
+        ),
+    }
+    tools = ("orfipy-prediction", "miranda-scan", "viennarna-prediction", "primer3-thermodynamics")
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, UTRRegulatoryAssayFamilySpec):

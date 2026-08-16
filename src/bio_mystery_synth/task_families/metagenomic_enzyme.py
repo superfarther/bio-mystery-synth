@@ -3,22 +3,22 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import CODONS, fasta
+from bio_mystery_synth.core import (
     AnswerSpec,
+    Difficulty,
     ExactAssertion,
     FamilyResult,
     GroundTruth,
-    MetagenomicEnzymeFamilySpec,
     OracleType,
     QuestionContext,
     ScenarioSpec,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.task_families.utr_regulatory_assay import CODONS
-from bio_mystery_synth.utils import anonymize, fasta
+from bio_mystery_synth.task_families.specs import MetagenomicEnzymeFamilySpec
 
 
 def _mutate(sequence: str, fraction: float, rng: random.Random) -> str:
@@ -48,8 +48,23 @@ def _composition_bias(sequence: str) -> float:
 @register
 class MetagenomicEnzymeFamily:
     family_id = "metagenomic-enzyme-forensics"
+    config_model = MetagenomicEnzymeFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_contigs=10, contig_length=5000, protein_length=110, num_homologs=5),
+        Difficulty.MEDIUM: dict(num_contigs=16, contig_length=8000, protein_length=150, num_homologs=6),
+        Difficulty.HARD: dict(num_contigs=24, contig_length=12_000, protein_length=180, num_homologs=7),
+    }
+    tools = (
+        "prodigal-prediction",
+        "pyhmmer-phmmer",
+        "esmfold-prediction",
+        "structure-metrics",
+        "tmalign-alignment",
+    )
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, MetagenomicEnzymeFamilySpec):

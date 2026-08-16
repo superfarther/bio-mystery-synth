@@ -3,21 +3,22 @@
 from __future__ import annotations
 
 import random
-from pathlib import Path
 
-from bio_mystery_synth.models import (
+from bio_mystery_synth.biology import fasta
+from bio_mystery_synth.core import (
     AnswerSpec,
+    Difficulty,
     FamilyResult,
     GroundTruth,
     OracleType,
-    ProteinStructureFamilySpec,
     QuestionContext,
     RankingAssertion,
     ScenarioSpec,
 )
-from bio_mystery_synth.runtime import Runtime
+from bio_mystery_synth.generation.context import GenerationContext
+from bio_mystery_synth.privacy import anonymize
 from bio_mystery_synth.task_families.base import register
-from bio_mystery_synth.utils import anonymize, fasta
+from bio_mystery_synth.task_families.specs import ProteinStructureFamilySpec
 
 
 def _structure_payload(structure: dict[str, object]) -> tuple[str, str]:
@@ -32,8 +33,17 @@ def _structure_payload(structure: dict[str, object]) -> tuple[str, str]:
 @register
 class ProteinStructureFamily:
     family_id = "protein-structure-nearest"
+    config_model = ProteinStructureFamilySpec
+    defaults = {  # noqa: RUF012
+        Difficulty.EASY: dict(num_candidates=4, sequence_length=90),
+        Difficulty.MEDIUM: dict(num_candidates=6, sequence_length=140),
+        Difficulty.HARD: dict(num_candidates=16, sequence_length=300),
+    }
+    tools = ("random-protein-sample", "esmfold-prediction", "tmalign-alignment")
+    supported_sources = ("closed-world",)
 
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult:
+    def generate(self, spec: ScenarioSpec, context: GenerationContext) -> FamilyResult:
+        runtime, workspace = context.runtime, context.workspace
         del workspace
         config = spec.family
         if not isinstance(config, ProteinStructureFamilySpec):

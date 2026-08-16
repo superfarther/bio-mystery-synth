@@ -119,7 +119,7 @@ pytest
 
 普通单元测试使用 `FakeRuntime`，不会启动真实的 Proto 模型环境。
 
-## 闭世界工具目录
+## 工具目录
 
 框架维护一个白名单，而不是把 proto-tools 注册表中的所有工具全部暴露给合成流程。当前包含 31 个可用工具：
 
@@ -166,15 +166,27 @@ bio-mystery-synth/
 ├── cases/                    # 已生成并保留的 case
 ├── configs/                  # 批量生成配置示例
 ├── scripts/                  # 用于复现实验的 CPU/GPU 生成脚本
-├── src/bio_mystery_synth/    # 核心包、CLI、运行时和任务族实现
-│   └── task_families/        # 各类闭世界任务的生成逻辑
+├── src/bio_mystery_synth/
+│   ├── core/                 # Scenario、答案、真值和 manifest 模型
+│   ├── generation/           # case 编排、校验和索引
+│   ├── task_families/        # 任务族实现、配置与注册中心
+│   ├── runtime/              # Runtime 接口与 Proto 后端
+│   ├── tools/                # 独立工具目录和执行策略
+│   ├── sources/              # 闭世界及外部参考数据源
+│   ├── synthesis/            # 可复用干预和观测模拟接口
+│   ├── artifacts/            # 文本、二进制和已有文件发布
+│   ├── authoring/            # 场景规划和问题撰写
+│   └── cli/                  # CLI 命令和配置模型
 └── tests/                    # 模型、CLI、流水线和运行时测试
 ```
 
 各目录职责如下：
 
-- `src/bio_mystery_synth/`：包含命令行入口、输入格式、默认出题配置、生成流程、问题撰写和 case 校验逻辑。
-- `src/bio_mystery_synth/task_families/`：定义每类题目如何合成数据、调用哪些工具、怎样得到答案，以及应该向 Agent 提供哪些材料。
+- `task_families/`：每个任务族声明自己的配置模型、难度默认值、工具依赖和可用 source。注册中心是 CLI、场景解析和生成器的唯一任务族目录。
+- `tools/`：工具白名单、能力分组和闭世界策略独立于任务族。任务族只通过 `Runtime` 调用工具，不区分 local 与 Modal。
+- `sources/`：负责准备基础生物数据并记录来源；数据库检索不属于闭世界工具执行。
+- `artifacts/`：统一发布文本、二进制或已有文件，并检查可见性和相对路径。
+- 根目录下的 `models.py`、`pipeline.py`、`factory.py` 等旧入口继续提供兼容导出。
 - `configs/`：存放 `batch` 命令使用的 YAML 配置示例。
 - `scripts/`：存放固定 seed 和 case ID 的复现实验脚本，以及计算节点启动脚本。
 - `tests/`：检查输入格式、CLI、公开/私有数据隔离，以及完整 case 的生成行为。
@@ -273,3 +285,11 @@ cases/<case_id>/
 - `private/generation_manifest.json`：本次生成的运行日志，记录 case ID、seed、执行后端、调用过的工具、公开文件列表和文件校验值，用于检查文件是否完整或被修改。
 
 `public/` 是 Agent 在训练或评测时看到的全部内容；`private/` 只能用于审核和检查，不得交给 Agent。
+
+## 扩展任务族、工具与数据源
+
+新任务族实现 `generate(spec, context)`，并通过 `FamilyRegistry` 注册配置模型、默认参数、工具依赖和支持的数据源。`context` 提供 `Runtime`、`SourceBundle`、确定性随机数、`ArtifactStore` 以及干预/观测注册中心。新增任务族不需要修改 `ScenarioSpec` 的中央联合类型或 CLI 分支。
+
+新工具通过 `ToolRegistry` 描述，并由 `ToolPolicy` 决定是否能在当前合成模式运行。默认 `ClosedWorldToolPolicy` 继续禁止 `database_retrieval`，并强制 BLAST 使用 case-local database。
+
+外部参考场景使用 schema v2 的 `ExternalReferenceSourceSpec`。当前内置 `local-file` provider 用于消费登录节点预先准备并校验过的参考文件；后续 RefSeq、SRA、ENA 等 provider 应实现相同接口，把下载内容缓存在共享 resource 目录，再将带版本和 SHA-256 的 `SourceBundle` 交给任务族。来源 ID、缓存路径、注入事实和匿名化映射只写入 `private/`，外部参考 case 另有 `private/source_manifest.json`。

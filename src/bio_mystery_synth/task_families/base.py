@@ -1,32 +1,41 @@
-"""Task family registry."""
+"""Compatibility exports for task family registration."""
 
-from __future__ import annotations
+from collections.abc import Mapping
 
-from pathlib import Path
-from typing import Protocol, TypeVar
-
-from bio_mystery_synth.models import FamilyResult, ScenarioSpec
-from bio_mystery_synth.runtime import Runtime
-
-
-class TaskFamily(Protocol):
-    family_id: str
-
-    def generate(self, spec: ScenarioSpec, runtime: Runtime, workspace: Path) -> FamilyResult: ...
+from bio_mystery_synth.task_families.registry import (
+    FamilyDefinition,
+    FamilyRegistry,
+    builtin_family_registry,
+    family_definitions,
+    get_family,
+    get_family_definition,
+    register,
+)
 
 
-FAMILIES: dict[str, TaskFamily] = {}
-T = TypeVar("T")
+class _FamilyView(Mapping[str, object]):
+    def _values(self) -> dict[str, object]:
+        return {key: definition.generator for key, definition in family_definitions().items()}
+
+    def __iter__(self):
+        return iter(self._values())
+
+    def __getitem__(self, key: str) -> object:
+        return self._values()[key]
+
+    def __len__(self) -> int:
+        return len(self._values())
 
 
-def register(family: T) -> T:
-    instance = family() if isinstance(family, type) else family
-    FAMILIES[instance.family_id] = instance
-    return family
+FAMILIES = _FamilyView()
 
-
-def get_family(family_id: str) -> TaskFamily:
-    try:
-        return FAMILIES[family_id]
-    except KeyError as exc:
-        raise ValueError(f"unknown task family: {family_id}") from exc
+__all__ = [
+    "FAMILIES",
+    "FamilyDefinition",
+    "FamilyRegistry",
+    "builtin_family_registry",
+    "family_definitions",
+    "get_family",
+    "get_family_definition",
+    "register",
+]
