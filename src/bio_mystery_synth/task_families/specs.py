@@ -147,3 +147,55 @@ class MetagenomicEnzymeFamilySpec(FamilyConfig):
         if self.num_homologs >= self.num_contigs:
             raise ValueError("homolog count must be smaller than contig count")
         return self
+
+
+class PromoterCassetteFamilySpec(FamilyConfig):
+    kind: Literal["promoter-cassette-forensics"] = "promoter-cassette-forensics"
+    num_cassettes: int = Field(default=16, ge=8, le=64)
+    cassette_length: int = Field(default=3200, ge=1800, le=20_000)
+    protein_length: int = Field(default=130, ge=80, le=400)
+    num_homologs: int = Field(default=6, ge=4, le=12)
+
+    @model_validator(mode="after")
+    def validate_homologs(self) -> PromoterCassetteFamilySpec:
+        if self.num_homologs >= self.num_cassettes:
+            raise ValueError("homolog count must be smaller than cassette count")
+        return self
+
+
+class ProfileFoldFamilySpec(FamilyConfig):
+    kind: Literal["profile-fold-rescue"] = "profile-fold-rescue"
+    num_candidates: int = Field(default=12, ge=8, le=24)
+    shortlist_size: int = Field(default=6, ge=4, le=12)
+
+    @model_validator(mode="after")
+    def validate_shortlist(self) -> ProfileFoldFamilySpec:
+        if self.shortlist_size >= self.num_candidates:
+            raise ValueError("shortlist must be smaller than candidate set")
+        return self
+
+
+class MultimerInterfaceFamilySpec(FamilyConfig):
+    kind: Literal["multimer-interface-selection"] = "multimer-interface-selection"
+    num_binders: int = Field(default=10, ge=6, le=18)
+    mutation_fraction: float = Field(default=0.28, ge=0.08, le=0.6)
+
+
+class ConformationLigandFamilySpec(FamilyConfig):
+    kind: Literal["conformation-ligand-triage"] = "conformation-ligand-triage"
+    num_receptors: int = Field(default=6, ge=4, le=10)
+    num_ligands: int = Field(default=7, ge=5, le=12)
+    receptor_length: int = Field(default=180, ge=120, le=400)
+
+
+class MobileElementFamilySpec(FamilyConfig):
+    kind: Literal["mobile-element-attribution"] = "mobile-element-attribution"
+    num_genomes: int = Field(default=20, ge=12, le=64)
+    genome_length: int = Field(default=10_000, ge=5000, le=100_000)
+    element_length: int = Field(default=1500, ge=1100, le=5000)
+
+    @model_validator(mode="after")
+    def validate_element(self) -> MobileElementFamilySpec:
+        if self.element_length * 2 > self.genome_length:
+            raise ValueError("element is too large for host genomes")
+        return self
