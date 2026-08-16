@@ -25,6 +25,17 @@ def test_new_family_scenarios_round_trip() -> None:
         assert restored == scenario
 
 
+def test_high_volume_family_scenarios_round_trip() -> None:
+    families = (
+        "protein-repair-adjudication",
+        "structural-discordance-cohort",
+        "metagenomic-stability-forensics",
+    )
+    for family in families:
+        scenario = default_scenario(family, Difficulty.HARD, 23, Backend.LOCAL, "cuda:0")
+        assert ScenarioSpec.model_validate_json(scenario.model_dump_json()) == scenario
+
+
 def test_unknown_fields_are_rejected() -> None:
     scenario = default_scenario("rna-structure-ranking", Difficulty.EASY, 4, Backend.LOCAL, "cpu")
     payload = scenario.model_dump()

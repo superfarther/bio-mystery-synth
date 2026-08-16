@@ -199,3 +199,44 @@ class MobileElementFamilySpec(FamilyConfig):
         if self.element_length * 2 > self.genome_length:
             raise ValueError("element is too large for host genomes")
         return self
+
+
+class ProteinRepairFamilySpec(FamilyConfig):
+    kind: Literal["protein-repair-adjudication"] = "protein-repair-adjudication"
+    num_candidates: int = Field(default=32, ge=16, le=48)
+    sequence_length: int = Field(default=220, ge=140, le=500)
+    hotspot_count: int = Field(default=28, ge=12, le=80)
+
+    @model_validator(mode="after")
+    def validate_hotspots(self) -> ProteinRepairFamilySpec:
+        if self.hotspot_count >= self.sequence_length // 2:
+            raise ValueError("hotspot count is too large")
+        return self
+
+
+class StructuralDiscordanceFamilySpec(FamilyConfig):
+    kind: Literal["structural-discordance-cohort"] = "structural-discordance-cohort"
+    num_candidates: int = Field(default=24, ge=16, le=36)
+    sequence_length: int = Field(default=240, ge=160, le=500)
+    shortlist_size: int = Field(default=6, ge=4, le=10)
+
+    @model_validator(mode="after")
+    def validate_shortlist(self) -> StructuralDiscordanceFamilySpec:
+        if self.shortlist_size >= self.num_candidates:
+            raise ValueError("shortlist must be smaller than candidate set")
+        return self
+
+
+class MetagenomicStabilityFamilySpec(FamilyConfig):
+    kind: Literal["metagenomic-stability-forensics"] = "metagenomic-stability-forensics"
+    num_contigs: int = Field(default=128, ge=64, le=192)
+    contig_length: int = Field(default=25_000, ge=15_000, le=50_000)
+    protein_length: int = Field(default=220, ge=160, le=400)
+    num_homologs: int = Field(default=16, ge=10, le=24)
+    finalist_count: int = Field(default=8, ge=5, le=12)
+
+    @model_validator(mode="after")
+    def validate_panel(self) -> MetagenomicStabilityFamilySpec:
+        if self.num_homologs >= self.num_contigs or self.finalist_count >= self.num_homologs:
+            raise ValueError("invalid homolog panel sizes")
+        return self

@@ -14,6 +14,9 @@ _MODULES = (
     "multimer_interface",
     "conformation_ligand",
     "mobile_element",
+    "protein_repair",
+    "structural_discordance",
+    "metagenomic_stability",
 )
 
 for _module in _MODULES:
