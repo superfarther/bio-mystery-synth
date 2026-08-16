@@ -1,0 +1,54 @@
+{
+  "backend": "local",
+  "case_id": "bms-hard-rna-structure-20260817",
+  "file_sha256": {
+    "private/answer.json": "6d05f129b05120c0f98a58db9b93b9977f9ea5c97dfefcd2d63c82076124219c",
+    "private/latent_truth.json": "a4a1e04ced142a731afa27b5abb518ca4798adc963758d3f969c7e30ca81379a",
+    "private/scenario.json": "4b9ffc288dd7095d82baf83f32f4cdebf2a5d017eb8ac3842e73cd48f8ef3779",
+    "public/data/sequences.fasta": "e294bbfa68b324ced848f7e2f5e73ffdcf48da8dfe26f2388e63964f97649d59",
+    "public/question.md": "a4d2bced1e7318dd3c715cc22806e41c2fa67c7b0d0ae7e72ffa625b3628b1b0"
+  },
+  "public_files": [
+    "public/data/sequences.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260817,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 600
+      },
+      "device": "cpu",
+      "duration_seconds": 2.299053,
+      "ok": true,
+      "tool": "proto-language:random-rna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "seed": 20260818,
+        "sequence_type": "rna",
+        "substitution_scheme": "N"
+      },
+      "device": "cpu",
+      "duration_seconds": 0.00495,
+      "ok": true,
+      "tool": "random-nucleotide-sample"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "temperature": 37.0
+      },
+      "device": "cpu",
+      "duration_seconds": 46.871006,
+      "ok": true,
+      "tool": "viennarna-prediction"
+    }
+  ]
+}

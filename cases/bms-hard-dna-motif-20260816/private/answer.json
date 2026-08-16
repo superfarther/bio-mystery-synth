@@ -1,0 +1,21 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_033:15534-15540:+",
+        "Sample_036:4404-4410:+",
+        "Sample_044:14174-14180:+",
+        "Sample_060:7100-7106:+",
+        "Sample_070:12447-12453:-",
+        "Sample_082:19690-19696:-",
+        "Sample_084:1804-1810:-",
+        "Sample_094:11782-11788:+"
+      ],
+      "field": "motif_hits",
+      "kind": "unordered_set"
+    }
+  ],
+  "oracle_type": "injected_truth",
+  "rubric_text": "Credit requires exactly these sample, 1-based interval, and strand tuples: Sample_033:15534-15540:+, Sample_036:4404-4410:+, Sample_044:14174-14180:+, Sample_060:7100-7106:+, Sample_070:12447-12453:-, Sample_082:19690-19696:-, Sample_084:1804-1810:-, Sample_094:11782-11788:+",
+  "schema_version": "1"
+}

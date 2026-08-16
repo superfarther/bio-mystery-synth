@@ -1,0 +1,60 @@
+{
+  "backend": "local",
+  "case_id": "bms-hard-crispr-linkage-20260818",
+  "file_sha256": {
+    "private/answer.json": "2821c23cc181593c4a16512f3c886865cfdd10a57209aa3978b015aa159593e6",
+    "private/latent_truth.json": "66e8ce34ac38c8e314b742b15dee8b9acbce8368992c5bda4557785ed288abc7",
+    "private/scenario.json": "e8fc49513b2dce635ed4247f3847b81c4d6cbaea94c693abffd09a1a246426ea",
+    "public/data/challenge_phages.fasta": "b1d17e92b417ad1ff9f57d6d372487969a89b725df3ecc5622f24aa2f3d9dc51",
+    "public/data/host_genomes.fasta": "05a1715662b4d82876a7474ea8c583bf72ab3d2be4c30998c58372301ab278d4",
+    "public/question.md": "43859dcba54483a4611de373c2ca6dbaedd373624ae1bad37134b936cd86d20e"
+  },
+  "public_files": [
+    "public/data/challenge_phages.fasta",
+    "public/data/host_genomes.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260818,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 48,
+        "gc_fraction": 0.5,
+        "length": 100000
+      },
+      "device": "cpu",
+      "duration_seconds": 9.02258,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "count": 3,
+        "gc_fraction": 0.5,
+        "length": 30000
+      },
+      "device": "cpu",
+      "duration_seconds": 0.121352,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "max_repeat_length": 28,
+        "max_spacer_length": 32,
+        "min_num_repeats": 10,
+        "min_repeat_length": 28,
+        "min_spacer_length": 32
+      },
+      "device": "cpu",
+      "duration_seconds": 35.758296,
+      "ok": true,
+      "tool": "minced-crispr"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cuda",
+    "tool_overrides": {}
+  },
+  "family": {
+    "alignment_tool": "tmalign-alignment",
+    "kind": "protein-structure-nearest",
+    "min_score_gap": 0.01,
+    "mutation_counts": null,
+    "num_candidates": 16,
+    "prediction_tool": "esmfold-prediction",
+    "sequence_length": 300
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260820,
+  "source": "closed-world"
+}

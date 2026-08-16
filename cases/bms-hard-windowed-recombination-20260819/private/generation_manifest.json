@@ -1,0 +1,44 @@
+{
+  "backend": "local",
+  "case_id": "bms-hard-windowed-recombination-20260819",
+  "file_sha256": {
+    "private/answer.json": "8f00f436e978809ee549dfb2ce65c35bd4eaedd769f04c37130f291eeef44e1c",
+    "private/latent_truth.json": "aa06d00a95eb3bfeaad43a951030259fc8da272b3bb6963e2c3fe7e2779c579b",
+    "private/scenario.json": "728802a8dbd7af223730856f59755de9848bb1c550ef1258bafa58a2e6f18991",
+    "public/data/isolates.fasta": "0674834395d9178596df0c73bc346c061a9ddf34d8219145f68c1c2c71df720f",
+    "public/question.md": "141b18a864afaeba90252047e28c248f696d1f6366d5b689f5b34f1e8e9cdfa4"
+  },
+  "public_files": [
+    "public/data/isolates.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260819,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": 0.5,
+        "length": 8000
+      },
+      "device": "cpu",
+      "duration_seconds": 2.402537,
+      "ok": true,
+      "tool": "proto-language:random-dna"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "align_method": "auto",
+        "max_iterations": 0,
+        "threads": 4
+      },
+      "device": "cpu",
+      "duration_seconds": 55.842951,
+      "ok": true,
+      "tool": "mafft-align"
+    }
+  ]
+}

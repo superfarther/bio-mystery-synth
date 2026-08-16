@@ -1,0 +1,213 @@
+{
+  "backend": "local",
+  "case_id": "bms-hard-protein-structure-20260820",
+  "file_sha256": {
+    "private/answer.json": "19d637f074173243d85aa8f112cbf18d52d9b9b3024f96c34a0dce8df2cbb87d",
+    "private/latent_truth.json": "3be02ce0182580449fa353aea94b25e3ddfab876539ecc4e6485394546d0eefa",
+    "private/scenario.json": "56503643bc26cced458e8d2327086dec900cfc2ad611790fe943b6fe1e644690",
+    "public/data/candidates/Sample_001.pdb": "bf89e9f95d2abd89fdeb9aeb656a5c3e9b5dcd647d65c68032f7814145749b99",
+    "public/data/candidates/Sample_002.pdb": "1a2e100b71388fbc0fecc0abfac7159cc7a084dac4cb298647a52f4d4d3be16a",
+    "public/data/candidates/Sample_003.pdb": "3c8b159fdf973a34016670b15bad164bb04b7e391ba00bc1ce0a66e6a12464d8",
+    "public/data/candidates/Sample_004.pdb": "7751b41858b7af886e13a0f4038dae84d7b92ff1523804ba121f47d084be049e",
+    "public/data/candidates/Sample_005.pdb": "e95c72d398c6411555ce6a2e71bbeecb0d59841f54f833eeab19fc32228116f3",
+    "public/data/candidates/Sample_006.pdb": "cd401bae0a96ceb6806f393b0cc040adea0d99ad6ba249c751c24708d8a5ed38",
+    "public/data/candidates/Sample_007.pdb": "d4627b76de28654f7ea910d55efc5c27ffb1e4fb01cb0a72b61c4bff48964017",
+    "public/data/candidates/Sample_008.pdb": "7036ec93ff91374cda64f75722e2f7676e349a23127a7b9fec4c194c4da4e702",
+    "public/data/candidates/Sample_009.pdb": "5bf1184d37576d59292b391a83219d662aaa09b4d1714c52a07b2ee309b3f10c",
+    "public/data/candidates/Sample_010.pdb": "21dedcf75a8eb230e1629202e5266e58d6ed02e2a6e831d33b3432b435d703ed",
+    "public/data/candidates/Sample_011.pdb": "32a448ce4fd4cfd3a6eb1d114fb5ef45f1497b67a2c7e9964b906d8f2b3b0b35",
+    "public/data/candidates/Sample_012.pdb": "ff330fb3f3aa34e9b3bf5030ab6c61a327abada58eaf6cbb9b70d515987cfec9",
+    "public/data/candidates/Sample_013.pdb": "4a4457ebe8af0f9afe604ebb76fd22b457f9ae80f439a3a5025858c1a5f3dc1b",
+    "public/data/candidates/Sample_014.pdb": "3765f1420a6e6781ba481d5275399913c9419de9e3d0cdc2efa453751a29e6c9",
+    "public/data/candidates/Sample_015.pdb": "7526dffd9058af3a3f24dbd6fb2321ead4ec56209969d4dfd62617af64ac431a",
+    "public/data/candidates/Sample_016.pdb": "42fa9fc99189fdea35cd4242319bfed228d68d6def891b6f4c89fff0d92c9812",
+    "public/data/reference.pdb": "92719a5c8a11e8e8e2361f9cb1ab163f11a4ea55e0b9a7e75062d15971ed5b1c",
+    "public/data/sequences.fasta": "32c688f3a4c6eceb849ef6a1ba0fe1b8018d351bf6ac83b8db081f52d71702f2",
+    "public/question.md": "1cb0c93e630959f10abd2fa8823bebd9d0fb4eb260920e71e9f8ff74235e07f5"
+  },
+  "public_files": [
+    "public/data/candidates/Sample_001.pdb",
+    "public/data/candidates/Sample_002.pdb",
+    "public/data/candidates/Sample_003.pdb",
+    "public/data/candidates/Sample_004.pdb",
+    "public/data/candidates/Sample_005.pdb",
+    "public/data/candidates/Sample_006.pdb",
+    "public/data/candidates/Sample_007.pdb",
+    "public/data/candidates/Sample_008.pdb",
+    "public/data/candidates/Sample_009.pdb",
+    "public/data/candidates/Sample_010.pdb",
+    "public/data/candidates/Sample_011.pdb",
+    "public/data/candidates/Sample_012.pdb",
+    "public/data/candidates/Sample_013.pdb",
+    "public/data/candidates/Sample_014.pdb",
+    "public/data/candidates/Sample_015.pdb",
+    "public/data/candidates/Sample_016.pdb",
+    "public/data/reference.pdb",
+    "public/data/sequences.fasta",
+    "public/question.md"
+  ],
+  "schema_version": "1",
+  "seed": 20260820,
+  "status": "complete",
+  "tool_calls": [
+    {
+      "backend": "local",
+      "config": {
+        "count": 1,
+        "gc_fraction": null,
+        "length": 300
+      },
+      "device": "cuda",
+      "duration_seconds": 1.417438,
+      "ok": true,
+      "tool": "proto-language:random-protein"
+    },
+    {
+      "backend": "local",
+      "config": {
+        "codon_scheme": "UNIFORM",
+        "seed": 20260821
+      },
+      "device": "cuda",
+      "duration_seconds": 0.001812,
+      "ok": true,
+      "tool": "random-protein-sample"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 193.723724,
+      "ok": true,
+      "tool": "esmfold-prediction"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 1.219288,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.17402,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.173444,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.173429,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.223505,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.173514,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.223056,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.173273,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.17431,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.174606,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.176852,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.17335,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.22453,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.173216,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.174058,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    },
+    {
+      "backend": "local",
+      "config": {},
+      "device": "cuda",
+      "duration_seconds": 0.174554,
+      "ok": true,
+      "tool": "tmalign-alignment"
+    }
+  ]
+}

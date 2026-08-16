@@ -1,0 +1,33 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cpu",
+    "tool_overrides": {}
+  },
+  "family": {
+    "genome_length": 100000,
+    "kind": "crispr-spacer-linkage",
+    "linked_spacers": 5,
+    "num_decoys": 12,
+    "num_genomes": 48,
+    "num_phages": 3,
+    "num_repeats": 10,
+    "num_targets": 4,
+    "phage_length": 30000,
+    "repeat": "GTTCACTGCCGTACAGGCAGCTTAGAAA",
+    "spacer_length": 32
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260818,
+  "source": "closed-world"
+}

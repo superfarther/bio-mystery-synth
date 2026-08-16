@@ -1,0 +1,18 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_007:7001",
+        "Sample_019:2001",
+        "Sample_055:6001",
+        "Sample_071:6001",
+        "Sample_083:2001"
+      ],
+      "field": "recombination_switches",
+      "kind": "unordered_set"
+    }
+  ],
+  "oracle_type": "deterministic_computation",
+  "rubric_text": "Credit requires exactly these recombinant and switch coordinates: Sample_007:7001, Sample_019:2001, Sample_055:6001, Sample_071:6001, Sample_083:2001",
+  "schema_version": "1"
+}

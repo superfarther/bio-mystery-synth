@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_011:91847-92414:Phage_01,Phage_02,Phage_03",
+        "Sample_015:55059-55626:Phage_01,Phage_02,Phage_03",
+        "Sample_025:90478-91045:Phage_01,Phage_02,Phage_03",
+        "Sample_038:36472-37039:Phage_01,Phage_02,Phage_03"
+      ],
+      "field": "linked_crispr_arrays",
+      "kind": "unordered_set"
+    }
+  ],
+  "oracle_type": "injected_truth",
+  "rubric_text": "Credit requires exactly these linked arrays: Sample_011:91847-92414:Phage_01,Phage_02,Phage_03; Sample_015:55059-55626:Phage_01,Phage_02,Phage_03; Sample_025:90478-91045:Phage_01,Phage_02,Phage_03; Sample_038:36472-37039:Phage_01,Phage_02,Phage_03",
+  "schema_version": "1"
+}

@@ -1,0 +1,28 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cpu",
+    "tool_overrides": {}
+  },
+  "family": {
+    "kind": "rna-structure-ranking",
+    "min_score_gap": 0.01,
+    "mutation_counts": null,
+    "num_candidates": 48,
+    "sequence_length": 600,
+    "temperature": 37.0
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260817,
+  "source": "closed-world"
+}

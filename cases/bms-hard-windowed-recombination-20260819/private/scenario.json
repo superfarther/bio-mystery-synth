@@ -1,0 +1,29 @@
+{
+  "anonymization": {
+    "sample_prefix": "Sample",
+    "shuffle": true,
+    "width": 3
+  },
+  "constraints": [],
+  "difficulty": "hard",
+  "entities": [],
+  "execution": {
+    "backend": "local",
+    "local_device": "cpu",
+    "tool_overrides": {}
+  },
+  "family": {
+    "clade_divergence": 0.12,
+    "kind": "windowed-recombination",
+    "num_candidates": 96,
+    "num_recombinants": 5,
+    "sequence_length": 8000,
+    "window_size": 250,
+    "within_clade_divergence": 0.01
+  },
+  "interventions": [],
+  "observations": [],
+  "schema_version": "1",
+  "seed": 20260819,
+  "source": "closed-world"
+}

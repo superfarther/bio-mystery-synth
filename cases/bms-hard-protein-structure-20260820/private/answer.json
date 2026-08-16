@@ -1,0 +1,30 @@
+{
+  "assertions": [
+    {
+      "expected": [
+        "Sample_008",
+        "Sample_016",
+        "Sample_001",
+        "Sample_011",
+        "Sample_009",
+        "Sample_007",
+        "Sample_004",
+        "Sample_013",
+        "Sample_010",
+        "Sample_005",
+        "Sample_003",
+        "Sample_006",
+        "Sample_014",
+        "Sample_012",
+        "Sample_002",
+        "Sample_015"
+      ],
+      "field": "structure_similarity",
+      "kind": "ranking",
+      "require_complete": true
+    }
+  ],
+  "oracle_type": "model_defined",
+  "rubric_text": "Credit requires this complete descending reference-normalized TM-score ranking: Sample_008 > Sample_016 > Sample_001 > Sample_011 > Sample_009 > Sample_007 > Sample_004 > Sample_013 > Sample_010 > Sample_005 > Sample_003 > Sample_006 > Sample_014 > Sample_012 > Sample_002 > Sample_015",
+  "schema_version": "1"
+}

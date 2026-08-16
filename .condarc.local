@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+channel_alias: https://conda.anaconda.org
+default_channels:
+  - https://repo.anaconda.com/pkgs/main
+repodata_use_zst: false
+show_channel_urls: true
