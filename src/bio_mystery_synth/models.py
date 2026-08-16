@@ -117,8 +117,57 @@ class ProteinStructureFamilySpec(StrictModel):
         return self
 
 
+class CrisprLinkageFamilySpec(StrictModel):
+    kind: Literal["crispr-spacer-linkage"] = "crispr-spacer-linkage"
+    num_genomes: int = Field(default=24, ge=6, le=128)
+    genome_length: int = Field(default=50_000, ge=5000, le=1_000_000)
+    num_phages: int = Field(default=3, ge=2, le=12)
+    phage_length: int = Field(default=20_000, ge=1000, le=200_000)
+    num_targets: int = Field(default=3, ge=1)
+    num_decoys: int = Field(default=6, ge=0)
+    repeat: str = Field(default="GTTCACTGCCGTACAGGCAGCTTAGAAA", min_length=23, max_length=47, pattern=r"^[ACGT]+$")
+    spacer_length: int = Field(default=32, ge=18, le=50)
+    num_repeats: int = Field(default=8, ge=4, le=24)
+    linked_spacers: int = Field(default=4, ge=1)
+
+    @model_validator(mode="after")
+    def validate_arrays(self) -> CrisprLinkageFamilySpec:
+        if self.num_targets + self.num_decoys > self.num_genomes:
+            raise ValueError("targets and decoys exceed genome count")
+        if self.linked_spacers > self.num_repeats - 1:
+            raise ValueError("linked_spacers exceeds available spacers")
+        array_length = self.num_repeats * len(self.repeat) + (self.num_repeats - 1) * self.spacer_length
+        if array_length > self.genome_length:
+            raise ValueError("CRISPR array exceeds genome length")
+        return self
+
+
+class RecombinationFamilySpec(StrictModel):
+    kind: Literal["windowed-recombination"] = "windowed-recombination"
+    num_candidates: int = Field(default=48, ge=8, le=256)
+    sequence_length: int = Field(default=4000, ge=500, le=50_000)
+    num_recombinants: int = Field(default=3, ge=1)
+    window_size: int = Field(default=200, ge=50, le=2000)
+    clade_divergence: float = Field(default=0.12, ge=0.03, le=0.35)
+    within_clade_divergence: float = Field(default=0.01, ge=0, le=0.05)
+
+    @model_validator(mode="after")
+    def validate_windows(self) -> RecombinationFamilySpec:
+        if self.num_recombinants >= self.num_candidates:
+            raise ValueError("recombinants must be fewer than candidates")
+        if self.sequence_length % self.window_size:
+            raise ValueError("sequence_length must be divisible by window_size")
+        if self.sequence_length // self.window_size < 4:
+            raise ValueError("at least four windows are required")
+        return self
+
+
 FamilySpec = Annotated[
-    DNAMotifFamilySpec | RNAStructureFamilySpec | ProteinStructureFamilySpec,
+    DNAMotifFamilySpec
+    | RNAStructureFamilySpec
+    | ProteinStructureFamilySpec
+    | CrisprLinkageFamilySpec
+    | RecombinationFamilySpec,
     Field(discriminator="kind"),
 ]
 

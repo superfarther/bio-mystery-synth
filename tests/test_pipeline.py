@@ -10,7 +10,13 @@ from bio_mystery_synth.pipeline import CaseGenerator, validate_case
 
 @pytest.mark.parametrize(
     "family",
-    ["dna-motif-localization", "rna-structure-ranking", "protein-structure-nearest"],
+    [
+        "dna-motif-localization",
+        "rna-structure-ranking",
+        "protein-structure-nearest",
+        "crispr-spacer-linkage",
+        "windowed-recombination",
+    ],
 )
 def test_family_end_to_end(tmp_path: Path, family: str) -> None:
     scenario = default_scenario(family, Difficulty.EASY, 42, Backend.LOCAL, "cpu")

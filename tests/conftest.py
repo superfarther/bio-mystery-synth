@@ -80,6 +80,18 @@ class FakeRuntime:
             match = re.search(r"MODEL (\d+)", inputs["query_structure"])
             index = int(match.group(1)) if match else 9
             output = {"metrics": {"tm_score_chain_1": 1 - index / 10, "tm_score_chain_2": 1 - index / 10}}
+        elif tool == "minced-crispr":
+            output = {
+                "results": [
+                    {"sequence_id": f"seq_{index}", "crispr_arrays": []}
+                    for index in range(len(inputs["sequences"]))
+                ]
+            }
+        elif tool == "mafft-align":
+            output = {
+                "metadata": {"num_sequences": len(inputs["sequences"])},
+                "msa": {"aligned_sequences": inputs["sequences"], "sequence_ids": inputs.get("sequence_ids")},
+            }
         else:
             raise ValueError(tool)
         self.calls.append(

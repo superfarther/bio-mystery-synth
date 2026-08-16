@@ -143,6 +143,8 @@ DECLARED_TOOLS = {
         "esmfold-prediction",
         "tmalign-alignment",
     ],
+    "crispr-spacer-linkage": ["minced-crispr"],
+    "windowed-recombination": ["mafft-align"],
 }
 
 
