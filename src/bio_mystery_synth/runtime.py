@@ -6,6 +6,14 @@ import time
 from typing import Any, Protocol
 
 from bio_mystery_synth.models import Backend, ExecutionSpec, ToolCallRecord
+from bio_mystery_synth.tool_catalog import (
+    CLOSED_WORLD_CONFIG,
+    CLOSED_WORLD_REQUIRED_CONFIG,
+    CURATED_TOOLS,
+    FAMILY_TOOLS,
+    TOOL_GROUPS,
+    apply_closed_world_config,
+)
 
 
 class Runtime(Protocol):
@@ -43,6 +51,9 @@ class ProtoRuntime:
                 device = "cpu"
             if spec.category == "database_retrieval":
                 raise ValueError(f"closed-world generation forbids {tool}")
+            if tool not in CURATED_TOOLS:
+                raise ValueError(f"tool is not approved for closed-world generation: {tool}")
+            merged = apply_closed_world_config(tool, merged)
             if self.execution.backend == Backend.LOCAL and spec.uses_gpu and not device.startswith("cuda"):
                 raise ValueError(f"{tool} requires a GPU; configure cuda or use Modal")
             payload = spec.input_model(**inputs)
@@ -137,54 +148,34 @@ class ProtoRuntime:
             )
 
 
-DECLARED_TOOLS = {
-    "dna-motif-localization": ["random-nucleotide-sample", "meme-fimo-scan"],
-    "rna-structure-ranking": ["random-nucleotide-sample", "viennarna-prediction"],
-    "protein-structure-nearest": [
-        "random-protein-sample",
-        "esmfold-prediction",
-        "tmalign-alignment",
-    ],
-    "protein-bridge-triage": [
-        "random-protein-sample",
-        "esmfold-prediction",
-        "structure-metrics",
-        "tmalign-alignment",
-        "mafft-align",
-    ],
-    "crispr-spacer-linkage": ["minced-crispr"],
-    "windowed-recombination": ["mafft-align"],
-    "utr-regulatory-assay": [
-        "orfipy-prediction",
-        "miranda-scan",
-        "viennarna-prediction",
-        "primer3-thermodynamics",
-    ],
-    "metagenomic-enzyme-forensics": [
-        "prodigal-prediction",
-        "pyhmmer-phmmer",
-        "esmfold-prediction",
-        "structure-metrics",
-        "tmalign-alignment",
-    ],
-}
+DECLARED_TOOLS = FAMILY_TOOLS
 
 
 def capability_catalog() -> dict[str, Any]:
-    catalog: dict[str, Any] = {"families": DECLARED_TOOLS, "tools": {}}
+    catalog: dict[str, Any] = {
+        "families": DECLARED_TOOLS,
+        "tool_groups": TOOL_GROUPS,
+        "declared_tool_count": len(CURATED_TOOLS),
+        "tools": {},
+        "unavailable_tools": [],
+    }
     try:
         from proto_tools.tools import ToolRegistry
     except ImportError:
         return catalog
-    allowed = {tool for tools in DECLARED_TOOLS.values() for tool in tools}
-    for tool in sorted(allowed):
+    for tool in sorted(CURATED_TOOLS):
         try:
             spec = ToolRegistry.get(tool)
         except ValueError:
+            catalog["unavailable_tools"].append(tool)
             continue
         catalog["tools"][tool] = {
+            "category": spec.category,
             "description": spec.description,
             "uses_gpu": spec.uses_gpu,
+            "supports_modal": not bool(spec.local_only),
+            "required_config": CLOSED_WORLD_CONFIG.get(tool, {}),
+            "required_config_fields": CLOSED_WORLD_REQUIRED_CONFIG.get(tool, ()),
             "input_schema": ToolRegistry.get_input_schema(tool),
             "config_schema": ToolRegistry.get_config_schema(tool),
         }

@@ -108,6 +108,9 @@ def list_tools() -> None:
     catalog = capability_catalog()
     for family, tools in catalog["families"].items():
         typer.echo(f"{family}: {', '.join(tools)}")
+    for group, tools in catalog["tool_groups"].items():
+        typer.echo(f"[{group}]: {', '.join(tools)}")
+    typer.echo(f"{len(catalog['tools'])}/{catalog['declared_tool_count']} tools available")
 
 
 @app.command("validate")
