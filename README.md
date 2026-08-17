@@ -4,7 +4,7 @@
 
 高质量的长程数据：[cases/](./cases/)
 
-迭代过程中产出的脏数据：[bad_cases/](./bad_cases/)
+迭代本项目过程中产出的脏数据：[bad_cases/](./bad_cases/)
 
 ## 目录
 
