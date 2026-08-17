@@ -11,9 +11,9 @@
 - [数据生成 Pipeline](#数据生成-pipeline)
 - [仓库布局](#仓库布局)
 - [环境配置](#环境配置)
-- [工具目录](#工具目录)
+- [可使用的工具列表](#可使用的工具列表)
 - [项目目录结构](#项目目录结构)
-- [项目输入](#项目输入)
+- [项目输入](#快速开始)
   - [使用默认场景生成一个 case](#使用默认场景生成一个-case)
   - [使用自然语言描述规划场景](#使用自然语言描述规划场景)
   - [使用 YAML 批量生成](#使用-yaml-批量生成)
@@ -139,9 +139,9 @@ pytest
 
 普通单元测试使用 `FakeRuntime`，不会启动真实的 Proto 模型环境。
 
-## 工具目录
+## 可使用的工具列表
 
-框架维护一个白名单，而不是把 proto-tools 注册表中的所有工具全部暴露给合成流程。当前包含 39 个可用工具：
+bio-mystery-synth 合成数据时会用到 proto-tools 提供的生物专业工具，当前包含 39 个可用工具：
 
 | 能力链 | 新增工具 |
 | --- | --- |
@@ -188,7 +188,7 @@ export PROTO_HOME=/share/org/YZWL/yzwl_yuanzh/work/kimi-work/resource/proto_home
 export PROTO_MODEL_CACHE=/share/org/YZWL/yzwl_yuanzh/work/kimi-work/resource/proto_model_cache
 ```
 
-## 项目目录结构
+## 目录结构
 
 ```text
 bio-mystery-synth/
@@ -221,22 +221,11 @@ bio-mystery-synth/
 - `tests/`：检查输入格式、CLI、公开/私有数据隔离，以及完整 case 的生成行为。
 - `cases/`：保存生成成功的 case；其内部的 `public/` 与 `private/` 必须始终分离。
 
-## 项目输入
+## 快速开始
 
-无论使用命令行、自然语言还是 YAML，输入最终都会转换成一个 `ScenarioSpec`。可以把它理解为一张“出题配方”：它明确规定生成什么类型的题、生成多少数据、使用哪个随机种子，以及在哪种设备上运行工具。同一份配方可以重复生成和审计。
+bio-mystery-synth 支持三种运行方式。
 
-`ScenarioSpec` 主要包含：
-
-- `family`：任务族及其专属参数；
-- `difficulty`：`easy`、`medium` 或 `hard`；
-- `seed`：控制数据合成和样本重命名的随机种子；
-- `execution`：`local` 或 `modal` 后端、本地设备及工具参数覆盖；
-- `anonymization`：把生成时使用的内部名称改成 `Sample_001` 这类公开名称时采用的规则；
-- 可选的实体、约束、干预和观测描述。
-
-CLI 支持三种输入方式。
-
-### 使用默认场景生成一个 case
+#### 使用默认场景生成一个 case
 
 ```bash
 bio-mystery-synth generate \
@@ -250,7 +239,7 @@ bio-mystery-synth generate \
 
 `generate` 根据 `family`、`difficulty`、`seed`、`backend` 和 `local-device` 构造默认 `ScenarioSpec`。未指定 `seed` 时会随机生成一个种子。`--output` 表示输出根目录，case 实际写入 `<output>/cases/`。
 
-### 使用自然语言描述规划场景
+#### 使用自然语言描述规划场景
 
 ```bash
 export OPENAI_API_KEY=...
@@ -265,7 +254,7 @@ bio-mystery-synth generate \
 
 不传 `--plan-prompt` 时，`--llm openai --model <model>` 只改写公开问题；完全不使用 LLM 时省略这两个参数，生成器会采用任务族内置问题。
 
-### 使用 YAML 批量生成
+#### 使用 YAML 批量生成
 
 ```bash
 bio-mystery-synth batch --config configs/curriculum.example.yaml
@@ -288,6 +277,17 @@ jobs:
 ```
 
 每个 job 从 `seed` 开始连续生成 `count` 个场景；`max_workers` 控制并行数。
+
+> 无论使用命令行、自然语言还是 YAML，输入最终都会转换成一个 `ScenarioSpec`。可以把它理解为一张“出题配方”：它明确规定生成什么类型的题、生成多少数据、使用哪个随机种子，以及在哪种设备上运行工具。同一份配方可以重复生成和审计。
+>
+> `ScenarioSpec` 主要包含：
+>
+> - `family`：任务族及其专属参数；
+> - `difficulty`：`easy`、`medium` 或 `hard`；
+> - `seed`：控制数据合成和样本重命名的随机种子；
+> - `execution`：`local` 或 `modal` 后端、本地设备及工具参数覆盖；
+> - `anonymization`：把生成时使用的内部名称改成 `Sample_001` 这类公开名称时采用的规则；
+> - 可选的实体、约束、干预和观测描述。
 
 ## 输出结构
 
