@@ -9,8 +9,7 @@
     "public/data/family_profile.hmm": "0980fcc2612e97679a2ec5adc9bd79d315ee10663b2bb3340b9ea4b13b619aed",
     "public/data/profile_seeds.fasta": "54a5cad650f71f2dde724da933196a0496466f03cbe51adc4141e9de332d81a7",
     "public/data/reference_fold.pdb": "b9b53acbb2306544fd8df8fa86b92c8d4b4f70d48131771c253bf3212883ff16",
-    "public/question.md": "cd9128b68fba45f9227cebffd436c2662bdb8cfc5e3d20e97a8aec37cbabb293",
-    "synthetic_fold_family.hmm": "0980fcc2612e97679a2ec5adc9bd79d315ee10663b2bb3340b9ea4b13b619aed"
+    "public/question.md": "cd9128b68fba45f9227cebffd436c2662bdb8cfc5e3d20e97a8aec37cbabb293"
   },
   "public_files": [
     "public/data/candidates.fasta",

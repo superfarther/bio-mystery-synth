@@ -1,6 +1,10 @@
 # bio-mystery-synth
 
-技术文档：[technical_report.md](./technical_report.md)
+技术文档：[technical_report.pdf](./technical_report.pdf)
+
+高质量的长程数据：[cases/](./cases/)
+
+迭代过程中产出的脏数据：[bad_cases/](./bad_cases/)
 
 ## 目录
 
